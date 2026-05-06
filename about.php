@@ -136,7 +136,7 @@ body {
 
     <!-- MISSION -->
     <div class="row">
-        <img src="img/about3.jpg">
+        <img src="img/about3.png">
         <div class="text">
             <h2>Our Mission</h2>
             <ul>
@@ -150,7 +150,7 @@ body {
 
     <!-- WHY -->
     <div class="row reverse">
-        <img src="img/about4.jpg">
+        <img src="img/face.jpeg">
         <div class="text">
             <h2>Why Choose Us?</h2>
             <ul>
