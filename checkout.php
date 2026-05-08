@@ -10,38 +10,36 @@ if (!isset($_SESSION['id_user'])) {
 $id_user = $_SESSION['id_user'];
 
 // ================= AMBIL ITEM YANG DIPILIH DARI CART =================
-// Ambil id_keranjang yang dicentang (dikirim dari cart.php via POST)
 $pilih = $_POST['pilih'] ?? [];
 
-// Kalau tidak ada yang dipilih, redirect ke cart
-if (empty($pilih)) {
-    header("Location: cart.php");
-    exit;
-}
-
-// Simpan pilihan ke session supaya tidak hilang saat form disubmit
 if (!empty($pilih)) {
     $_SESSION['pilih'] = $pilih;
 } else {
     $pilih = $_SESSION['pilih'] ?? [];
 }
 
+if (empty($pilih)) {
+    header("Location: cart.php");
+    exit;
+}
+
 // Ambil data produk yang dipilih
-$ids = implode(',', array_map('intval', $pilih));
-$query = "
+$ids    = implode(',', array_map('intval', $pilih));
+$query  = "
     SELECT keranjang.*, produk.nama_produk, produk.harga_produk, produk.gambar
     FROM keranjang
     JOIN produk ON keranjang.id_produk = produk.id_produk
     WHERE keranjang.id_keranjang IN ($ids)
     AND keranjang.id_user = '$id_user'
 ";
-$result = mysqli_query($db, $query);
-$items = [];
+$result   = mysqli_query($db, $query);
+$items    = [];
 $subtotal = 0;
+
 while ($row = mysqli_fetch_assoc($result)) {
     $row['subtotal'] = $row['harga_produk'] * $row['quantity'];
-    $subtotal += $row['subtotal'];
-    $items[] = $row;
+    $subtotal       += $row['subtotal'];
+    $items[]         = $row;
 }
 
 if (empty($items)) {
@@ -71,19 +69,22 @@ if (isset($_POST['confirm'])) {
     if (!$payment_method) $errors[] = "Payment Method wajib dipilih.";
 
     if (empty($errors)) {
-        // INSERT ke order_produk
-        $sql_order = "INSERT INTO order_produk 
-            (id_user, first_name, surname, phone, address, jasa_kirim, payment_method, ongkir, total_harga, status_pembayaran, created_at)
-            VALUES 
-            ('$id_user', '$first_name', '$surname', '$phone', '$address', '$jasa_kirim', '$payment_method', '$ongkir', '$total', 'pending', NOW())";
 
-        mysqli_query($db, $sql_order);
+        // INSERT ke order_produk
+        mysqli_query($db, "
+            INSERT INTO order_produk 
+                (id_user, first_name, surname, phone, address, jasa_kirim, payment_method, ongkir, total_harga, status_pembayaran, created_at)
+            VALUES 
+                ('$id_user', '$first_name', '$surname', '$phone', '$address', '$jasa_kirim', '$payment_method', '$ongkir', '$total', 'pending', NOW())
+        ");
         $id_order = mysqli_insert_id($db);
 
         // INSERT ke order_detail
         foreach ($items as $item) {
-            mysqli_query($db, "INSERT INTO order_detail (id_order, id_produk, quantity)
-                VALUES ('$id_order', '{$item['id_produk']}', '{$item['quantity']}')");
+            mysqli_query($db, "
+                INSERT INTO order_detail (id_order, id_produk, quantity)
+                VALUES ('$id_order', '{$item['id_produk']}', '{$item['quantity']}')
+            ");
         }
 
         // Hapus item dari keranjang yang sudah di-checkout
@@ -110,13 +111,13 @@ if (isset($_POST['confirm'])) {
 * { margin: 0; padding: 0; box-sizing: border-box; }
 
 :root {
-    --cream:  #f3eee9;
-    --white:  #ffffff;
-    --green:  #2d4d2c;
-    --gold:   #e0a94f;
-    --pink:   #ffb6c1;
-    --red:    #c0392b;
-    --gray:   #888;
+    --cream:    #f3eee9;
+    --white:    #ffffff;
+    --green:    #2d4d2c;
+    --gold:     #e0a94f;
+    --pink:     #ffb6c1;
+    --red:      #c0392b;
+    --gray:     #888;
     --input-bg: #e8dfd8;
 }
 
@@ -136,7 +137,6 @@ body {
     align-items: start;
 }
 
-/* ===== FORM CARD ===== */
 .form-card {
     background: var(--white);
     border-radius: 20px;
@@ -191,7 +191,6 @@ body {
     min-height: 80px;
 }
 
-/* Jasa Kirim Radio */
 .radio-group {
     display: flex;
     flex-direction: column;
@@ -215,7 +214,6 @@ body {
     cursor: pointer;
 }
 
-/* Payment Method */
 .payment-options {
     display: flex;
     flex-direction: column;
@@ -244,7 +242,6 @@ body {
     accent-color: var(--green);
 }
 
-/* Error */
 .error-box {
     background: #fdecea;
     border-left: 4px solid var(--red);
@@ -261,7 +258,6 @@ body {
 
 .error-box p:last-child { margin-bottom: 0; }
 
-/* Buttons */
 .btn-group {
     display: flex;
     flex-direction: column;
@@ -302,12 +298,11 @@ body {
     text-align: center;
     text-decoration: none;
     display: block;
-    transition: border-color 0.2s;
+    transition: border-color 0.2s, color 0.2s;
 }
 
 .btn-back:hover { border-color: var(--green); color: var(--green); }
 
-/* ===== ORDER SUMMARY ===== */
 .summary-card {
     background: var(--green);
     border-radius: 20px;
@@ -340,9 +335,7 @@ body {
     border-radius: 8px;
 }
 
-.summary-item-info {
-    flex: 1;
-}
+.summary-item-info { flex: 1; }
 
 .summary-item-info .nama {
     font-size: 13px;
@@ -386,7 +379,7 @@ body {
 
 <div class="page-wrapper">
 
-    <!-- ===== FORM ===== -->
+    <!-- FORM -->
     <div class="form-card">
         <h2 class="form-title">FORM</h2>
 
@@ -399,29 +392,35 @@ body {
         <?php endif; ?>
 
         <form method="POST">
-            <!-- Kirim ulang pilihan item -->
             <?php foreach ($pilih as $p): ?>
                 <input type="hidden" name="pilih[]" value="<?= $p ?>">
             <?php endforeach; ?>
 
             <div class="form-group">
                 <label>First Name</label>
-                <input type="text" name="first_name" value="<?= htmlspecialchars($_POST['first_name'] ?? '') ?>" placeholder="Masukkan nama depan">
+                <input type="text" name="first_name"
+                       value="<?= htmlspecialchars($_POST['first_name'] ?? '') ?>"
+                       placeholder="Masukkan nama depan">
             </div>
 
             <div class="form-group">
                 <label>Surname</label>
-                <input type="text" name="surname" value="<?= htmlspecialchars($_POST['surname'] ?? '') ?>" placeholder="Masukkan nama belakang">
+                <input type="text" name="surname"
+                       value="<?= htmlspecialchars($_POST['surname'] ?? '') ?>"
+                       placeholder="Masukkan nama belakang">
             </div>
 
             <div class="form-group">
                 <label>Phone Number</label>
-                <input type="tel" name="phone" value="<?= htmlspecialchars($_POST['phone'] ?? '') ?>" placeholder="08xxxxxxxxxx">
+                <input type="tel" name="phone"
+                       value="<?= htmlspecialchars($_POST['phone'] ?? '') ?>"
+                       placeholder="08xxxxxxxxxx">
             </div>
 
             <div class="form-group">
                 <label>Address</label>
-                <textarea name="address" placeholder="Masukkan alamat lengkap"><?= htmlspecialchars($_POST['address'] ?? '') ?></textarea>
+                <textarea name="address"
+                          placeholder="Masukkan alamat lengkap"><?= htmlspecialchars($_POST['address'] ?? '') ?></textarea>
             </div>
 
             <div class="form-group">
@@ -463,7 +462,7 @@ body {
         </form>
     </div>
 
-    <!-- ===== ORDER SUMMARY ===== -->
+    <!-- ORDER SUMMARY -->
     <div class="summary-card">
         <h3>Order Summary</h3>
 
@@ -499,6 +498,7 @@ body {
     </div>
 
 </div>
+<?php include "layout/footer.html" ?>
 
 </body>
 </html>
