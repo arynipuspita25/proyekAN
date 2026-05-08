@@ -36,6 +36,7 @@ $result = mysqli_query($db, $query);
 </head>
 
 <body>
+<?php include "layout/header.html" ?>
 
 <h2>Your Cart</h2>
 
