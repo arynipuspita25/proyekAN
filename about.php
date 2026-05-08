@@ -163,6 +163,8 @@ body {
     </div>
 
 </section>
+<!-- ===== FOOTER ===== -->
+<?php include "layout/footer.html" ?>
 
 </body>
 </html>
