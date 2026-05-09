@@ -31,7 +31,7 @@ $result = mysqli_query($db, $query);
 
     <!-- kiri -->
     <div class="hero-left">
-        <img src="img/keriting.jpeg">
+        <img src="img/produk.png">
     </div>
 
     <!-- tengah -->
