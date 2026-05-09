@@ -122,7 +122,7 @@ body{
 
 .hero-left img{
     width:100%;
-    height:450px;
+    height:520px;
     object-fit:cover;
     display:block;
 }
@@ -227,7 +227,7 @@ h2{
 
 .product-card img{
     width:100%;
-    height:300px;
+    height:290px;
     object-fit:cover;
 }
 
@@ -246,6 +246,7 @@ h2{
     font-size:18px;
     margin-top:20px;
     margin-bottom:15px;
+    color:#EDBB5C;
 }
 
 .btn-detail{
