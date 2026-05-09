@@ -376,7 +376,7 @@ body {
 
             <!-- HAPUS -->
             <a href="?hapus=<?= $row['id_keranjang'] ?>" class="btn-hapus"
-               onclick="return confirm('Hapus produk ini dari keranjang?')">
+               onclick="return confirm">
                 <svg fill="none" stroke-width="2" viewBox="0 0 24 24">
                     <polyline points="3 6 5 6 21 6"/>
                     <path d="M19 6l-1 14H6L5 6"/>

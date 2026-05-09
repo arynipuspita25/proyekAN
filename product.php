@@ -31,7 +31,7 @@ $result = mysqli_query($db, $query);
 
     <!-- kiri -->
     <div class="hero-left">
-        <img src="img/keriting.jpeg">
+        <img src="img/keriting.jpg">
     </div>
 
     <!-- tengah -->
@@ -86,7 +86,7 @@ $result = mysqli_query($db, $query);
 <style>
 body {
     font-family: Arial, sans-serif;
-    background-color: #f5f5f5;
+    background-color: #ffffff;
     margin: 0;
 }
 
@@ -119,7 +119,7 @@ h2 {
 .product-card:hover {
     transform: translateY(-8px) scale(1.03);
     box-shadow: 0 12px 25px rgba(0,0,0,0.25);
-    border: 1px solid #ffb6c1;
+    border: 1px solid #ffffff;
 }
 
 .product-card img {
@@ -160,14 +160,14 @@ h2 {
     background-color: #ffa3b0;
 }
 
-/* HERO */
+
 /* HERO */
 .hero {
     display: flex;
     align-items: center;
     justify-content: space-between;
     padding: 60px 80px;
-    background: #f7dfe3;
+    background: #f8e2e2;
     position: relative;
     overflow: hidden;
     min-height: 320px;
