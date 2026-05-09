@@ -2,97 +2,223 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>About - AN Skin Lab</title>
 
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&family=Playfair+Display:wght@600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Playfair+Display:wght@500;600;700&display=swap" rel="stylesheet">
 
 <style>
-body { 
-    font-family: 'Poppins', sans-serif;
-    margin: 0;
-    background: #f4f7f2;
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
 }
 
-/* HERO */
-.hero-about {
-    height: 350px;
-    background: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)),
-                url('img/produk.png');
-    background-size: cover;
-    background-position: center;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    color: white;
-    text-align: center;
+html{
+    scroll-behavior:smooth;
 }
 
-.hero-about h1 {
-    font-family: 'Cormorant Garamond', serif;
-    font-size: 50px;
-    margin: 0;
+body{
+    font-family:'Poppins', sans-serif;
+    background:#f8f6f2;
+    overflow-x:hidden;
+    color:#333;
 }
 
-/* SECTION */
-.section {
-    padding: 80px 10%;
+/* ===== HERO ===== */
+
+.hero-about{
+    height:75vh;
+    background:
+    linear-gradient(rgba(0,0,0,0.45), rgba(0,0,0,0.45)),
+    url('img/produk.png');
+    background-size:cover;
+    background-position:center;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    text-align:center;
+    position:relative;
 }
 
-/* FLEX LAYOUT */
-.row {
-    display: flex;
-    align-items: center;
-    gap: 40px;
-    margin-bottom: 80px;
+.hero-about::after{
+    content:'';
+    position:absolute;
+    width:100%;
+    height:120px;
+    background:linear-gradient(to top,#f8f6f2,transparent);
+    bottom:0;
 }
 
-.row.reverse {
-    flex-direction: row-reverse;
+.hero-content{
+    position:relative;
+    z-index:2;
+    animation:fadeUp 1.5s ease;
 }
 
-.row img {
-    width: 45%;
-    border-radius: 20px;
-    box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+.hero-about h1{
+    font-family:'Playfair Display', serif;
+    font-size:65px;
+    color:white;
+    letter-spacing:3px;
+    margin-bottom:20px;
 }
 
-.text {
-    width: 55%;
+.hero-about p{
+    color:#f5f5f5;
+    font-size:18px;
+    letter-spacing:2px;
 }
 
-.text h2 {
-    font-family: 'Playfair Display', serif;
-    color: #2f5d50;
-    font-size: 30px;
+/* ===== SECTION ===== */
+
+.section{
+    padding:100px 10%;
 }
 
-.text p {
-    line-height: 1.7;
-    color: #444;
+/* ===== ROW ===== */
+
+.row{
+    display:flex;
+    align-items:center;
+    gap:50px;
+    margin-bottom:100px;
+    position:relative;
 }
 
-/* LIST STYLE */
-.text ul {
-    padding-left: 20px;
+.row.reverse{
+    flex-direction:row-reverse;
 }
 
-.text li {
-    margin-bottom: 10px;
+/* ===== IMAGE ===== */
+
+.row img{
+    width:40%;
+    border-radius:25px;
+    box-shadow:0 20px 40px rgba(0,0,0,0.12);
+    transition:0.5s;
 }
 
-/* RESPONSIVE */
-@media (max-width: 768px) {
-    .row {
-        flex-direction: column;
+.row img:hover{
+    transform:scale(1.03);
+}
+
+/* ===== TEXT ===== */
+
+.text{
+    width:60%;
+    background:rgba(255,255,255,0.8);
+    backdrop-filter:blur(10px);
+    padding:40px;
+    border-radius:25px;
+    box-shadow:0 10px 25px rgba(0,0,0,0.08);
+    transition:0.4s;
+}
+
+.text:hover{
+    transform:translateY(-5px);
+}
+
+.text h2{
+    font-family:'Playfair Display', serif;
+    font-size:38px;
+    color:#264d3f;
+    margin-bottom:20px;
+    position:relative;
+}
+
+.text h2::after{
+    content:'';
+    width:60px;
+    height:2px;
+    background:#8fa88d;
+    position:absolute;
+    left:0;
+    bottom:-10px;
+}
+
+.text p{
+    margin-top:30px;
+    line-height:1.9;
+    color:#555;
+    font-size:15px;
+}
+
+.text ul{
+    margin-top:30px;
+    padding-left:20px;
+}
+
+.text li{
+    margin-bottom:14px;
+    line-height:1.8;
+    color:#555;
+}
+
+/* ===== FLOATING BLUR ===== */
+
+.blur1,
+.blur2{
+    position:absolute;
+    border-radius:50%;
+    filter:blur(100px);
+    z-index:-1;
+}
+
+.blur1{
+    width:220px;
+    height:220px;
+    background:#d7e7d3;
+    top:-50px;
+    left:-80px;
+}
+
+.blur2{
+    width:220px;
+    height:220px;
+    background:#efe2d7;
+    bottom:-50px;
+    right:-80px;
+}
+
+/* ===== ANIMATION ===== */
+
+@keyframes fadeUp{
+    from{
+        opacity:0;
+        transform:translateY(40px);
     }
-    .row.reverse {
-        flex-direction: column;
+    to{
+        opacity:1;
+        transform:translateY(0);
     }
+}
+
+/* ===== RESPONSIVE ===== */
+
+@media(max-width:900px){
+
+    .hero-about h1{
+        font-size:50px;
+    }
+
+    .row,
+    .row.reverse{
+        flex-direction:column;
+    }
+
     .row img,
-    .text {
-        width: 100%;
+    .text{
+        width:100%;
     }
+
+    .text{
+        padding:30px;
+    }
+
 }
+
 </style>
 </head>
 
@@ -102,73 +228,83 @@ body {
 
 <!-- HERO -->
 <section class="hero-about">
-    <div>
+    <div class="hero-content">
         <h1>About Us</h1>
-        <p>Soft care for your natural glow</p>
+        <p>Luxury skincare for your natural beauty</p>
     </div>
 </section>
 
-<!-- ABOUT CONTENT -->
+<!-- SECTION -->
 <section class="section">
 
-    <!-- WHO WE ARE -->
-    <div class="row">
-        <img src="img/ABOUT1.jpg">
-        <div class="text">
-            <h2>Who We Are</h2>
-            <p>
-                AN Skin Lab is a skincare brand focused on natural skin care with lightweight and safe formulas for everyday use. Our products are designed to maintain healthy skin while enhancing a natural glowing appearance.
-                We believe that skincare should not only improve beauty, but also build confidence and comfort in every daily activity. Using carefully selected ingredients, AN Skin Lab provides skincare solutions that nourish, hydrate, and protect the skin for all skin types.
-                With a modern and elegant concept, AN Skin Lab is committed to delivering high-quality skincare products that support healthy, radiant, and naturally beautiful skin.
-            </p>
-        </div>
-    </div>
+<div class="blur1"></div>
+<div class="blur2"></div>
 
-    <!-- VISION -->
-    <div class="row reverse">
-        <img src="img/ABOUT2.jpg">
-        <div class="text">
-            <h2>Our Vision</h2>
-            <p>
-                To become a trusted skincare brand that provides natural-based products suitable for all skin types, including teenage skin. 
-                we aim to empower individuals to embrace their natural beauty and achieve healthy, glowing skin through safe and affordable skincare solutions.
-        
-            </p>
-        </div>
-    </div>
+<!-- WHO WE ARE -->
+<div class="row">
+    <img src="img/ABOUT1.jpg">
 
-    <!-- MISSION -->
-    <div class="row">
-        <img src="img/ABOUT3.jpg">
-        <div class="text">
-            <h2>Our Mission</h2>
-            <ul>
-                <li>Using high-quality natural ingredients</li>
-                <li>Providing safe and lightweight skincare treatments</li>
-                <li>Helping skin stay healthy and naturally glowing</li>
-                <li>Suitable for all skin types, including sensitive and teenage skin</li>
-                <li>Continuously innovating modern skincare solutions</li>
-                <li>Prioritizing customer satisfaction and skin health</li>
-            </ul>
-        </div>
-    </div>
+    <div class="text">
+        <h2>Who We Are</h2>
 
-    <!-- WHY -->
-    <div class="row reverse">
-        <img src="img/ABOUT4.jpg">
-        <div class="text">
-            <h2>Why Choose Us?</h2>
-            <ul>
-                <li>Organic Ingredients</li>
-                <li>Lightweight & Non-Greasy</li>
-                <li>Daily Protection</li>
-                <li>All Skin Types</li>
-            </ul>
-        </div>
+        <p>
+            AN Skin Lab is a premium skincare brand focused on elegant beauty, natural ingredients, and healthy glowing skin. 
+            We create lightweight skincare products designed for everyday comfort while maintaining a luxurious skincare experience.
+            Every formula is carefully developed to nourish, protect, and enhance natural beauty for all skin types.
+        </p>
     </div>
+</div>
+
+<!-- VISION -->
+<div class="row reverse">
+    <img src="img/ABOUT2.jpg">
+
+    <div class="text">
+        <h2>Our Vision</h2>
+
+        <p>
+            To become a trusted modern skincare brand that inspires confidence through safe, elegant, and natural skincare solutions.
+            We believe every individual deserves healthy and radiant skin with products that feel luxurious yet gentle.
+        </p>
+    </div>
+</div>
+
+<!-- MISSION -->
+<div class="row">
+    <img src="img/ABOUT3.jpg">
+
+    <div class="text">
+        <h2>Our Mission</h2>
+
+        <ul>
+            <li>Using high-quality natural ingredients</li>
+            <li>Providing safe and lightweight skincare</li>
+            <li>Helping skin stay healthy & glowing</li>
+            <li>Suitable for all skin types</li>
+            <li>Creating elegant modern skincare innovation</li>
+            <li>Prioritizing customer satisfaction</li>
+        </ul>
+    </div>
+</div>
+
+<!-- WHY -->
+<div class="row reverse">
+    <img src="img/ABOUT4.jpg">
+
+    <div class="text">
+        <h2>Why Choose Us?</h2>
+
+        <ul>
+            <li>Premium Organic Ingredients</li>
+            <li>Elegant Lightweight Formula</li>
+            <li>Healthy Natural Glow</li>
+            <li>Luxury Daily Skincare</li>
+        </ul>
+    </div>
+</div>
 
 </section>
-<!-- ===== FOOTER ===== -->
+
 <?php include "layout/footer.html" ?>
 
 </body>
