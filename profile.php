@@ -22,110 +22,253 @@ $user = mysqli_fetch_assoc(mysqli_query($db, "SELECT * FROM users WHERE id_user 
 <title>Profile – Skinlab</title>
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;700&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
 <style>
-* { margin: 0; padding: 0; box-sizing: border-box; }
 
-:root {
-    --cream: #f3eee9;
-    --white: #ffffff;
-    --green: #2d4d2c;
-    --gold:  #e0a94f;
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
 }
 
-body {
-    font-family: 'DM Sans', sans-serif;
-    background: var(--cream);
-    min-height: 100vh;
+:root{
+    --cream:#f8f5f1;
+    --white:#ffffff;
+    --green:#244336;
+    --green2:#355c4d;
+    --gold:#d8b36a;
+    --text:#444;
 }
 
-.page-wrapper {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    min-height: 80vh;
-    padding: 40px 20px;
+body{
+    font-family:'DM Sans', sans-serif;
+    background:
+    linear-gradient(rgba(248,245,241,0.92), rgba(248,245,241,0.92)),
+    url('img/bg.jpg');
+    background-size:cover;
+    min-height:100vh;
+    overflow-x:hidden;
+}
+
+/* ===== WRAPPER ===== */
+
+.page-wrapper{
+    min-height:100vh;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    padding:120px 20px 60px;
+    position:relative;
+}
+
+/* ===== GLOW ===== */
+
+.page-wrapper::before{
+    content:'';
+    position:absolute;
+    width:300px;
+    height:300px;
+    background:#d9e6d5;
+    border-radius:50%;
+    filter:blur(120px);
+    top:80px;
+    left:-100px;
+    z-index:-1;
+}
+
+.page-wrapper::after{
+    content:'';
+    position:absolute;
+    width:300px;
+    height:300px;
+    background:#f1dfc7;
+    border-radius:50%;
+    filter:blur(120px);
+    bottom:20px;
+    right:-100px;
+    z-index:-1;
 }
 
 /* ===== CARD ===== */
-.profile-card {
-    background: var(--green);
-    border-radius: 20px;
-    width: 100%;
-    max-width: 460px;
-    overflow: hidden;
-    box-shadow: 0 8px 32px rgba(0,0,0,0.15);
+
+.profile-card{
+    width:100%;
+    max-width:470px;
+    background:rgba(255,255,255,0.75);
+    backdrop-filter:blur(18px);
+    border:1px solid rgba(255,255,255,0.4);
+    border-radius:35px;
+    overflow:hidden;
+    box-shadow:
+    0 20px 50px rgba(0,0,0,0.12);
+    animation:fadeUp 1s ease;
+    transition:.4s;
 }
 
-/* Header user */
-.profile-header {
-    display: flex;
-    align-items: center;
-    gap: 18px;
-    padding: 28px 30px;
-    border-bottom: 1px solid rgba(255,255,255,0.15);
+.profile-card:hover{
+    transform:translateY(-8px);
 }
 
-.avatar {
-    width: 60px;
-    height: 60px;
-    background: #c8c8c8;
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-shrink: 0;
+/* ===== HEADER ===== */
+
+.profile-header{
+    background:
+    linear-gradient(135deg,var(--green),var(--green2));
+    padding:45px 35px;
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    text-align:center;
+    position:relative;
 }
 
-.avatar svg {
-    width: 36px;
-    height: 36px;
-    fill: #888;
+/* ===== GOLD LINE ===== */
+
+.profile-header::after{
+    content:'';
+    width:120px;
+    height:3px;
+    background:var(--gold);
+    position:absolute;
+    bottom:0;
+    left:50%;
+    transform:translateX(-50%);
 }
 
-.profile-header h2 {
-    font-family: 'Playfair Display', serif;
-    font-size: 22px;
-    color: white;
-    font-weight: 600;
+/* ===== AVATAR ===== */
+
+.avatar{
+    width:110px;
+    height:110px;
+    background:rgba(255,255,255,0.18);
+    border:3px solid rgba(255,255,255,0.3);
+    border-radius:50%;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    margin-bottom:18px;
+    backdrop-filter:blur(10px);
+    box-shadow:0 10px 30px rgba(0,0,0,0.2);
 }
 
-/* Menu */
-.profile-menu {
-    list-style: none;
-    padding: 10px 0;
+.avatar svg{
+    width:58px;
+    height:58px;
+    fill:white;
 }
 
-.profile-menu li a {
-    display: flex;
-    align-items: center;
-    gap: 16px;
-    padding: 18px 30px;
-    color: white;
-    text-decoration: none;
-    font-size: 17px;
-    font-weight: 400;
-    transition: background 0.2s;
+/* ===== NAME ===== */
+
+.profile-header h2{
+    font-family:'Playfair Display', serif;
+    color:white;
+    font-size:33px;
+    font-weight:600;
+    letter-spacing:1px;
 }
 
-.profile-menu li a:hover {
-    background: rgba(255,255,255,0.08);
+.profile-header p{
+    color:rgba(255,255,255,0.8);
+    margin-top:8px;
+    font-size:14px;
+    letter-spacing:2px;
 }
 
-.profile-menu li a svg {
-    width: 20px;
-    height: 20px;
-    stroke: rgba(255,255,255,0.7);
-    fill: none;
-    stroke-width: 2;
-    flex-shrink: 0;
+/* ===== MENU ===== */
+
+.profile-menu{
+    list-style:none;
+    padding:20px;
 }
 
-.profile-menu li.logout a {
-    color: #ffb6c1;
+/* ===== ITEM ===== */
+
+.profile-menu li{
+    margin-bottom:16px;
 }
 
-.profile-menu li.logout a svg {
-    stroke: #ffb6c1;
+.profile-menu li a{
+    display:flex;
+    align-items:center;
+    gap:18px;
+    text-decoration:none;
+    background:white;
+    padding:18px 22px;
+    border-radius:18px;
+    color:var(--text);
+    font-size:16px;
+    font-weight:500;
+    transition:.35s;
+    box-shadow:0 8px 20px rgba(0,0,0,0.05);
 }
+
+.profile-menu li a:hover{
+    transform:translateX(8px);
+    background:var(--green);
+    color:white;
+}
+
+.profile-menu li a:hover svg{
+    stroke:white;
+}
+
+/* ===== ICON ===== */
+
+.profile-menu li a svg{
+    width:22px;
+    height:22px;
+    stroke:var(--green);
+    fill:none;
+    stroke-width:2;
+    transition:.3s;
+}
+
+/* ===== LOGOUT ===== */
+
+.profile-menu li.logout a{
+    background:#fff1f3;
+    color:#d45b72;
+}
+
+.profile-menu li.logout a svg{
+    stroke:#d45b72;
+}
+
+.profile-menu li.logout a:hover{
+    background:#d45b72;
+    color:white;
+}
+
+.profile-menu li.logout a:hover svg{
+    stroke:white;
+}
+
+/* ===== ANIMATION ===== */
+
+@keyframes fadeUp{
+    from{
+        opacity:0;
+        transform:translateY(40px);
+    }
+
+    to{
+        opacity:1;
+        transform:translateY(0);
+    }
+}
+
+/* ===== MOBILE ===== */
+
+@media(max-width:768px){
+
+    .profile-card{
+        max-width:100%;
+    }
+
+    .profile-header h2{
+        font-size:28px;
+    }
+
+}
+
 </style>
 </head>
 
