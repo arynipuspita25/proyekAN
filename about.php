@@ -17,7 +17,7 @@ body {
 .hero-about {
     height: 350px;
     background: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)),
-                url('img/keriting.jpeg');
+                url('img/keriting.jpg');
     background-size: cover;
     background-position: center;
     display: flex;
@@ -113,7 +113,7 @@ body {
 
     <!-- WHO WE ARE -->
     <div class="row">
-        <img src="img/about1.jpg">
+        <img src="img/ABOUT1.jpg">
         <div class="text">
             <h2>Who We Are</h2>
             <p>
@@ -125,7 +125,7 @@ body {
 
     <!-- VISION -->
     <div class="row reverse">
-        <img src="img/about2.jpg">
+        <img src="img/ABOUT2.jpg">
         <div class="text">
             <h2>Our Vision</h2>
             <p>
@@ -136,7 +136,7 @@ body {
 
     <!-- MISSION -->
     <div class="row">
-        <img src="img/about3.png">
+        <img src="img/ABOUT3.jpg">
         <div class="text">
             <h2>Our Mission</h2>
             <ul>
@@ -150,7 +150,7 @@ body {
 
     <!-- WHY -->
     <div class="row reverse">
-        <img src="img/face.jpeg">
+        <img src="img/ABOUT4.jpg">
         <div class="text">
             <h2>Why Choose Us?</h2>
             <ul>
