@@ -209,15 +209,15 @@ h2{
 .product-list{
     display:grid;
     grid-template-columns:repeat(3,1fr);
-    gap:30px;
-    padding:20px 60px 60px;
+    gap:40px;
+    padding:15px 20px 25px;
 }
 
 .product-card{
     background:#173d08;
     color:white;
-    padding:20px;
-    border-radius:5px;
+    padding:10px;
+    border-radius:8px;
     transition:0.3s;
 }
 
@@ -227,25 +227,26 @@ h2{
 
 .product-card img{
     width:100%;
-    height:290px;
+    height:350px;
     object-fit:cover;
+    border-radius:6px;
 }
 
 .product-card h3{
-    font-size:20px;
-    margin:18px 0 10px;
+    font-size:16px;
+    margin:12px 0 6px;
 }
 
 .product-card p{
     color:#d9d9d9;
-    font-size:14px;
+    font-size:12px;
 }
 
 .price{
     text-align:right;
-    font-size:18px;
-    margin-top:20px;
-    margin-bottom:15px;
+    font-size:15px;
+    margin-top:12px;
+    margin-bottom:10px;
     color:#EDBB5C;
 }
 
@@ -256,6 +257,17 @@ h2{
     color:#333;
     text-decoration:none;
     border-radius:20px;
+    transition:0.25s ease;
+}
+
+.btn-detail:hover{
+    transform:translateY(-3px);
+    box-shadow:0 6px 15px rgba(0,0,0,0.25);
+}
+
+.btn-detail:active{
+    transform:scale(0.92);
+    box-shadow:none;
 }
 
 /* RESPONSIVE */
