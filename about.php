@@ -17,7 +17,7 @@ body {
 .hero-about {
     height: 350px;
     background: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)),
-                url('img/keriting.jpg');
+                url('img/produk.png');
     background-size: cover;
     background-position: center;
     display: flex;
@@ -117,8 +117,9 @@ body {
         <div class="text">
             <h2>Who We Are</h2>
             <p>
-                AN Skin Lab adalah brand skincare yang berfokus pada perawatan kulit alami dengan formula ringan dan aman 
-                digunakan sehari-hari. Produk kami membantu menjaga kesehatan kulit sekaligus memberikan tampilan glowing alami.
+                AN Skin Lab is a skincare brand focused on natural skin care with lightweight and safe formulas for everyday use. Our products are designed to maintain healthy skin while enhancing a natural glowing appearance.
+                We believe that skincare should not only improve beauty, but also build confidence and comfort in every daily activity. Using carefully selected ingredients, AN Skin Lab provides skincare solutions that nourish, hydrate, and protect the skin for all skin types.
+                With a modern and elegant concept, AN Skin Lab is committed to delivering high-quality skincare products that support healthy, radiant, and naturally beautiful skin.
             </p>
         </div>
     </div>
@@ -129,7 +130,9 @@ body {
         <div class="text">
             <h2>Our Vision</h2>
             <p>
-                Menjadi brand skincare terpercaya dengan produk berbahan alami yang cocok untuk semua jenis kulit, termasuk kulit remaja.
+                To become a trusted skincare brand that provides natural-based products suitable for all skin types, including teenage skin. 
+                we aim to empower individuals to embrace their natural beauty and achieve healthy, glowing skin through safe and affordable skincare solutions.
+        
             </p>
         </div>
     </div>
@@ -140,10 +143,12 @@ body {
         <div class="text">
             <h2>Our Mission</h2>
             <ul>
-                <li>Menggunakan bahan alami berkualitas</li>
-                <li>Memberikan perawatan yang aman & ringan</li>
-                <li>Membantu kulit tetap sehat dan glowing</li>
-                <li>Cocok untuk semua jenis kulit</li>
+                <li>Using high-quality natural ingredients</li>
+                <li>Providing safe and lightweight skincare treatments</li>
+                <li>Helping skin stay healthy and naturally glowing</li>
+                <li>Suitable for all skin types, including sensitive and teenage skin</li>
+                <li>Continuously innovating modern skincare solutions</li>
+                <li>Prioritizing customer satisfaction and skin health</li>
             </ul>
         </div>
     </div>

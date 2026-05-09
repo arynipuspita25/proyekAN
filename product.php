@@ -146,12 +146,12 @@ body{
 }
 
 .hero-top img{
-    width:160px;
+    width:210px;
     transform:rotate(8deg);
 }
 
 .hero-center h1{
-    font-size:32px;
+    font-size:50px;
     line-height:1.4;
     color:#214321;
     font-weight:400;
