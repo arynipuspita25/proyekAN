@@ -313,6 +313,40 @@ body {
     width: 20px;
     height: 20px;
 }
+
+..back-product{
+    display:inline-flex;
+    align-items:center;
+    gap:8px;
+    text-decoration:none;
+    color:#2d4d2c;
+    font-weight:500;
+    font-size:14px;
+
+    padding:10px 16px;
+    border-radius:12px;
+    background:rgba(45,77,44,0.08);
+
+    margin-bottom:20px;
+
+    transition:0.2s ease;
+}
+
+.back-product:hover{
+    background:rgba(45,77,44,0.15);
+    transform:translateX(-4px);
+}
+
+/* CENTER ALIGN DI WRAPPER */
+.cart-wrapper{
+    max-width:700px;
+    margin:40px auto;
+    padding:0 20px 60px;
+
+    display:flex;
+    flex-direction:column;
+}
+
 </style>
 </head>
 
@@ -329,8 +363,13 @@ body {
     </svg>
     <h1>Cart</h1>
 </div>
-
+   
 <div class="cart-wrapper">
+
+    <!-- BACK BUTTON (FIXED POSITION AREA) -->
+    <a href="product.php" class="back-product">
+        ← Back to Products
+    </a>
 
 <?php if ($jumlah == 0): ?>
 

@@ -148,92 +148,142 @@ body {
     background: #f3eee9;
 }
 
+/* =========================
+   MAIN WRAPPER
+========================= */
 .product-detail {
     display: flex;
-    gap: 50px;
-    padding: 60px 100px;
+    gap: 80px;
+    padding: 80px 8vw;
     align-items: center;
+    justify-content: space-between;
+    min-height: 85vh; /* biar full layar laptop */
+    box-sizing: border-box;
+}
+
+/* =========================
+   LEFT IMAGE (lebih balance)
+========================= */
+.product-image {
+    flex: 1;
+    display: flex;
+    justify-content: center;
 }
 
 .product-image img {
-    width: 350px;
-    border-radius: 15px;
-    box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+    width: 100%;
+    max-width: 420px;
+    border-radius: 18px;
+    box-shadow: 0 15px 35px rgba(0,0,0,0.18);
+    transition: 0.3s ease;
 }
 
+.product-image img:hover {
+    transform: scale(1.03);
+}
+
+/* =========================
+   RIGHT CONTENT (lebih dominan sedikit)
+========================= */
 .product-info {
-    max-width: 500px;
+    flex: 1.2;
+    max-width: 600px;
 }
 
+/* TITLE */
 .product-info h2 {
-    font-size: 24px;
+    font-size: 28px;
     color: #2d4d2c;
+    font-weight: 600;
 }
 
+/* PRICE */
 .price {
     color: #e0a94f;
-    font-size: 34px;
-    margin: 15px 0;
+    font-size: 38px;
+    margin: 18px 0;
+    font-weight: bold;
 }
 
+/* BENEFITS */
 .benefits {
     list-style: none;
     padding: 0;
     color: #333;
+    margin: 15px 0;
 }
 
 .benefits li {
-    margin: 5px 0;
+    margin: 7px 0;
+    font-size: 14px;
 }
 
+/* DIVIDER */
+hr {
+    border: none;
+    height: 1px;
+    background: #ddd;
+    margin: 25px 0;
+}
+
+/* QTY */
 .qty-box {
     display: inline-flex;
     align-items: center;
     background: #e0a94f;
-    border-radius: 10px;
+    border-radius: 12px;
     overflow: hidden;
 }
 
 .qty-box button {
     border: none;
-    padding: 10px 15px;
+    padding: 12px 16px;
     cursor: pointer;
     background: none;
     font-size: 18px;
+    transition: 0.2s;
+}
+
+.qty-box button:hover {
+    background: rgba(0,0,0,0.1);
 }
 
 .qty-box span {
-    padding: 0 20px;
+    padding: 0 22px;
     font-weight: bold;
 }
 
+/* BUTTON GROUP */
 .tombol-group {
     display: flex;
     align-items: center;
     gap: 15px;
-    flex-wrap: wrap;
+    margin-top: 20px;
 }
 
+/* ADD TO CART */
 .cart-btn {
     background: #ffb6c1;
     border: none;
-    padding: 12px 25px;
-    border-radius: 25px;
+    padding: 14px 30px;
+    border-radius: 30px;
     color: #333;
     font-size: 14px;
     cursor: pointer;
-    transition: 0.3s;
+    transition: 0.3s ease;
 }
 
 .cart-btn:hover {
     background: #ffa3b0;
+    transform: translateY(-2px);
 }
 
+/* CART LINK */
 .lihat-cart-btn {
     background: #2d4d2c;
     color: white;
-    padding: 12px 20px;
-    border-radius: 25px;
+    padding: 14px 22px;
+    border-radius: 30px;
     text-decoration: none;
     font-size: 14px;
     transition: 0.3s;
@@ -243,39 +293,54 @@ body {
     background: #1e3a1d;
 }
 
+/* MESSAGE */
 .pesan-sukses {
     color: #2d7a2d;
     background: #e6f4ea;
-    padding: 10px 15px;
-    border-radius: 8px;
-    margin-bottom: 10px;
+    padding: 12px 15px;
+    border-radius: 10px;
+    margin-bottom: 12px;
     font-weight: bold;
 }
 
 .pesan-error {
     color: #a00;
     background: #fdecea;
-    padding: 10px 15px;
-    border-radius: 8px;
-    margin-bottom: 10px;
+    padding: 12px 15px;
+    border-radius: 10px;
+    margin-bottom: 12px;
 }
 
+/* DESCRIPTION */
 .description {
-    padding: 30px 100px;
+    padding: 40px 8vw;
     line-height: 1.8;
     color: #444;
     max-width: 900px;
+    font-size: 15px;
 }
 
+/* =========================
+   RESPONSIVE
+========================= */
 @media (max-width: 900px) {
     .product-detail {
         flex-direction: column;
-        padding: 40px;
+        padding: 50px 20px;
+        gap: 40px;
+        text-align: center;
+    }
+
+    .product-info {
+        max-width: 100%;
     }
 
     .product-image img {
-        width: 100%;
-        max-width: 300px;
+        max-width: 320px;
+    }
+
+    .tombol-group {
+        justify-content: center;
     }
 }
 </style>
