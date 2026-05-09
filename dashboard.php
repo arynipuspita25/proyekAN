@@ -516,7 +516,7 @@ $username = $_SESSION['username'] ?? 'Guest';
 
     <div class="hero-right">
         <!-- Ganti src dengan gambar hero kamu -->
-        <img src="img/hero.jpg" alt="AN Skin Lab"
+        <img src="img/face.jpeg" alt="AN Skin Lab"
              onerror="this.style.display='none'; this.nextElementSibling.style.display='flex'">
         <div class="hero-right-fallback" style="display:none">
             <div class="brand-big">AN<br>SKIN<br>LAB</div>
