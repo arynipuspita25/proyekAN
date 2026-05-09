@@ -106,6 +106,7 @@ body{
     color:var(--green);
     margin-bottom:35px;
     font-weight:700;
+    text-align:center;
 }
 
 /* =========================
@@ -412,7 +413,7 @@ body{
 <div class="page-wrapper">
 
     <h2 class="page-title">
-        🧾 Purchase History
+        PURCHASE HISTORY
     </h2>
 
     <?php if(empty($orders)): ?>
