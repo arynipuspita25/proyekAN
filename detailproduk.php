@@ -2,8 +2,16 @@
 session_start();
 require "service/database.php";
 
+// Sementara untuk testing
+if (!isset($_SESSION['id_user'])) {
+    header("Location: login.php");
+    exit;
+}
+
+$id_user = $_SESSION['id_user'];
+
 // ambil id dari product.php
-$id = $_GET['id'] ?? 0;
+$id = $_POST['id_produk'] ?? $_GET['id'] ?? 0;
 
 // ambil data produk
 $query = "SELECT * FROM produk WHERE id_produk = '$id'";
@@ -23,16 +31,31 @@ if (isset($_POST['minus'])) {
     if ($qty > 1) $qty--;
 }
 
+// pesan
+$pesan_sukses = "";
+$pesan_error  = "";
+
 // ADD TO CART
 if (isset($_POST['add'])) {
+    if ($qty > 0 && $id > 0) {
 
-    if ($qty > 0) {
+        $cek = mysqli_query($db, "
+            SELECT * FROM keranjang 
+            WHERE id_user = '$id_user' AND id_produk = '$id'
+        ");
 
-        // contoh sederhana (nanti kita upgrade ke tabel keranjang)
-        echo "<script>alert('Produk berhasil ditambahkan ke keranjang!')</script>";
+        if (mysqli_num_rows($cek) > 0) {
+            $row_cek  = mysqli_fetch_assoc($cek);
+            $qty_baru = $row_cek['quantity'] + $qty;
+            mysqli_query($db, "UPDATE keranjang SET quantity='$qty_baru' WHERE id_user='$id_user' AND id_produk='$id'");
+        } else {
+            mysqli_query($db, "INSERT INTO keranjang (id_user, id_produk, quantity) VALUES ('$id_user', '$id', '$qty')");
+        }
+
+        $pesan_sukses = "✅ Produk berhasil ditambahkan ke keranjang!";
 
     } else {
-        echo "<script>alert('Quantity harus lebih dari 0!')</script>";
+        $pesan_error = "Quantity harus lebih dari 0!";
     }
 }
 ?>
@@ -45,6 +68,7 @@ if (isset($_POST['add'])) {
 </head>
 
 <body>
+<?php include "layout/header.html" ?>
 
 <div class="product-detail">
 
@@ -72,6 +96,7 @@ if (isset($_POST['add'])) {
 
         <!-- FORM -->
         <form method="POST">
+            <input type="hidden" name="id_produk" value="<?= $id ?>">
 
             <p>Quantity</p>
 
@@ -85,9 +110,24 @@ if (isset($_POST['add'])) {
 
             <br><br>
 
-            <button type="submit" name="add" class="cart-btn">
-                🛒 Add to Cart
-            </button>
+            <!-- PESAN -->
+            <?php if ($pesan_sukses): ?>
+                <p class="pesan-sukses"><?= $pesan_sukses ?></p>
+            <?php endif; ?>
+
+            <?php if ($pesan_error): ?>
+                <p class="pesan-error"><?= $pesan_error ?></p>
+            <?php endif; ?>
+
+            <div class="tombol-group">
+                <button type="submit" name="add" class="cart-btn">
+                    🛒 Add to Cart
+                </button>
+
+                <?php if ($pesan_sukses): ?>
+                    <a href="cart.php" class="lihat-cart-btn">Lihat Cart →</a>
+                <?php endif; ?>
+            </div>
 
         </form>
 
@@ -102,14 +142,12 @@ if (isset($_POST['add'])) {
 </body>
 
 <style>
-
 body {
     margin: 0;
     font-family: Arial;
     background: #f3eee9;
 }
 
-/* CONTAINER */
 .product-detail {
     display: flex;
     gap: 50px;
@@ -117,14 +155,12 @@ body {
     align-items: center;
 }
 
-/* IMAGE */
 .product-image img {
     width: 350px;
     border-radius: 15px;
     box-shadow: 0 10px 25px rgba(0,0,0,0.15);
 }
 
-/* INFO */
 .product-info {
     max-width: 500px;
 }
@@ -140,7 +176,6 @@ body {
     margin: 15px 0;
 }
 
-/* BENEFITS */
 .benefits {
     list-style: none;
     padding: 0;
@@ -151,7 +186,6 @@ body {
     margin: 5px 0;
 }
 
-/* QTY */
 .qty-box {
     display: inline-flex;
     align-items: center;
@@ -173,7 +207,13 @@ body {
     font-weight: bold;
 }
 
-/* BUTTON */
+.tombol-group {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    flex-wrap: wrap;
+}
+
 .cart-btn {
     background: #ffb6c1;
     border: none;
@@ -189,7 +229,37 @@ body {
     background: #ffa3b0;
 }
 
-/* DESKRIPSI */
+.lihat-cart-btn {
+    background: #2d4d2c;
+    color: white;
+    padding: 12px 20px;
+    border-radius: 25px;
+    text-decoration: none;
+    font-size: 14px;
+    transition: 0.3s;
+}
+
+.lihat-cart-btn:hover {
+    background: #1e3a1d;
+}
+
+.pesan-sukses {
+    color: #2d7a2d;
+    background: #e6f4ea;
+    padding: 10px 15px;
+    border-radius: 8px;
+    margin-bottom: 10px;
+    font-weight: bold;
+}
+
+.pesan-error {
+    color: #a00;
+    background: #fdecea;
+    padding: 10px 15px;
+    border-radius: 8px;
+    margin-bottom: 10px;
+}
+
 .description {
     padding: 30px 100px;
     line-height: 1.8;
@@ -197,7 +267,6 @@ body {
     max-width: 900px;
 }
 
-/* RESPONSIVE */
 @media (max-width: 900px) {
     .product-detail {
         flex-direction: column;

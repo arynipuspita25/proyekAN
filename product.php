@@ -79,6 +79,7 @@ $result = mysqli_query($db, $query);
 <?php endwhile; ?>
 
 </div>
+<?php include "layout/footer.html" ?>
 
 </body>
 
@@ -160,41 +161,150 @@ h2 {
 }
 
 /* HERO */
+/* HERO */
 .hero {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    padding: 50px 80px;
-    background: #f3eee9;
+    padding: 60px 80px;
+    background: #f7dfe3;
+    position: relative;
+    overflow: hidden;
+    min-height: 320px;
+    gap: 40px;
 }
 
+
+/* Gambar kiri */
 .hero-left img {
-    max-width: 400px;
-    border-radius: 12px;
+    width: 320px;
+    height: 400px;
+    object-fit: cover;
+    border-radius: 160px 160px 12px 12px;
+    box-shadow: 0 20px 50px rgba(0,0,0,0.12);
+    position: relative;
+    z-index: 1;
 }
-
+/* Tengah */
 .hero-center {
     text-align: center;
+    flex: 1;
+    position: relative;
+    z-index: 1;
+}
+
+.hero-center h1 {
+    font-family: Georgia, serif;
+    font-size: 32px;
+    font-weight: 400;
+    color: #2d4d2c;
+    line-height: 1.3;
+    margin-bottom: 6px;
+}
+
+.hero-center p {
+    font-size: 13px;
+    letter-spacing: 3px;
+    color: #e0a94f;
+    margin-bottom: 28px;
+    text-transform: uppercase;
+}
+
+/* Search bar */
+.hero-center form {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    flex-wrap: wrap;
 }
 
 .hero-center input {
-    padding: 10px;
-    border-radius: 20px;
+    padding: 12px 22px;
+    border-radius: 30px;
+    border: 1.5px solid #e0b8bf;
+    background: white;
+    color: #333;
+    font-size: 14px;
+    width: 260px;
+    outline: none;
+    transition: box-shadow 0.2s;
 }
 
-.hero-right img {
-    width: 180px;
-    transform: rotate(-15deg);
+.hero-center input::placeholder {
+    color: #bbb;
+}
+
+.hero-center input:focus {
+    box-shadow: 0 0 0 2px rgba(224,169,79,0.4);
+    border-color: #e0a94f;
 }
 
 .btn-reset {
-    margin-left: 10px;
-    padding: 8px 12px;
-    background: #ccc;
-    border-radius: 15px;
+    padding: 11px 18px;
+    border-radius: 30px;
+    background: white;
+    color: #888;
     text-decoration: none;
+    font-size: 13px;
+    border: 1.5px solid #ddd;
+    transition: border-color 0.2s, color 0.2s;
 }
 
+.btn-reset:hover {
+    border-color: #2d4d2c;
+    color: #2d4d2c;
+}
+
+.btn-reset {
+    padding: 11px 18px;
+    border-radius: 30px;
+    background: rgb(238, 115, 187);
+    color: rgba(255,255,255,0.7);
+    text-decoration: none;
+    font-size: 13px;
+    border: 1px solid rgba(255,255,255,0.2);
+    transition: background 0.2s;
+}
+
+.btn-reset:hover {
+    background: rgba(230, 117, 173, 0.61);
+    color: white;
+}
+
+/* Gambar kanan */
+.hero-right img {
+    width: 180px;
+    height: 220px;
+    object-fit: cover;
+    border-radius: 12px 12px 90px 90px;
+    box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+    transform: rotate(6deg);
+    position: relative;
+    z-index: 1;
+    transition: transform 0.3s;
+}
+
+.hero-right img:hover {
+    transform: rotate(0deg) scale(1.03);
+}
+
+/* Responsive hero */
+@media (max-width: 900px) {
+    .hero {
+        flex-direction: column;
+        padding: 50px 30px;
+        text-align: center;
+    }
+
+    .hero-left, .hero-right {
+        display: none;
+    }
+
+    .hero-center input {
+        width: 200px;
+    }
+}
 /* RESPONSIVE */
 @media (max-width: 900px) {
     .product-list {
