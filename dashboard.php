@@ -495,7 +495,7 @@ $username = $_SESSION['username'] ?? 'Guest';
         <div class="hero-deco"></div>
         <div class="hero-deco2"></div>
 
-        <p class="hero-eyebrow">Natural Skincare · Est. 2024</p>
+        <p class="hero-eyebrow">Natural Skincare · Est. 2026</p>
 
         <h1 class="hero-title">
             Glow Your<br>
@@ -536,11 +536,11 @@ $username = $_SESSION['username'] ?? 'Guest';
 <!-- ===== STATS ===== -->
 <div class="stats-bar">
     <div class="stat-item">
-        <div class="stat-number">500+</div>
+        <div class="stat-number">1009+</div>
         <div class="stat-label">Happy Customers</div>
     </div>
     <div class="stat-item">
-        <div class="stat-number">20+</div>
+        <div class="stat-number">1109+</div>
         <div class="stat-label">Products</div>
     </div>
     <div class="stat-item">

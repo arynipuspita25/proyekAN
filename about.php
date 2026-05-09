@@ -28,7 +28,7 @@ body {
 }
 
 .hero-about h1 {
-    font-family: 'Playfair Display', serif;
+    font-family: 'Cormorant Garamond', serif;
     font-size: 50px;
     margin: 0;
 }
