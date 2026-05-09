@@ -78,177 +78,298 @@ if (isset($_POST['simpan'])) {
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Edit Profil – Skinlab</title>
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;700&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
-<style>
-* { margin: 0; padding: 0; box-sizing: border-box; }
+<<style>
 
-:root {
-    --cream:    #f3eee9;
-    --white:    #ffffff;
-    --green:    #2d4d2c;
-    --gold:     #e0a94f;
-    --pink:     #ffb6c1;
-    --red:      #c0392b;
-    --input-bg: #e8dfd8;
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
 }
 
-body {
-    font-family: 'DM Sans', sans-serif;
-    background: var(--cream);
-    min-height: 100vh;
+:root{
+    --cream:#f8f5f1;
+    --white:#ffffff;
+    --green:#244336;
+    --green2:#355c4d;
+    --gold:#d9b26f;
+    --pink:#ffd8df;
+    --red:#c0392b;
+    --input:#f6f1eb;
+    --text:#555;
 }
 
-.page-wrapper {
-    display: flex;
-    justify-content: center;
-    align-items: flex-start;
-    padding: 50px 20px 80px;
+body{
+    font-family:'DM Sans', sans-serif;
+    background:
+    linear-gradient(rgba(248,245,241,.9), rgba(248,245,241,.9)),
+    url('img/bg.jpg');
+    background-size:cover;
+    min-height:100vh;
+    overflow-x:hidden;
+    position:relative;
+}
+
+/* ===== BACKGROUND GLOW ===== */
+
+body::before{
+    content:'';
+    position:fixed;
+    width:450px;
+    height:450px;
+    background:#dfe9da;
+    border-radius:50%;
+    top:-120px;
+    left:-100px;
+    filter:blur(120px);
+    z-index:-2;
+}
+
+body::after{
+    content:'';
+    position:fixed;
+    width:420px;
+    height:420px;
+    background:#f2dfcb;
+    border-radius:50%;
+    bottom:-120px;
+    right:-100px;
+    filter:blur(120px);
+    z-index:-2;
+}
+
+/* ===== WRAPPER ===== */
+
+.page-wrapper{
+    min-height:100vh;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    padding:120px 20px 70px;
+    position:relative;
+}
+
+/* ===== BACK TEXT ===== */
+
+.bg-text{
+    position:absolute;
+    top:50%;
+    left:50%;
+    transform:translate(-50%,-50%);
+    font-size:130px;
+    font-family:'Playfair Display', serif;
+    font-weight:700;
+    color:rgba(255,255,255,0.35);
+    letter-spacing:15px;
+    z-index:-1;
+    user-select:none;
 }
 
 /* ===== CARD ===== */
-.edit-card {
-    background: var(--white);
-    border-radius: 20px;
-    width: 100%;
-    max-width: 480px;
-    padding: 40px;
-    box-shadow: 0 6px 28px rgba(0,0,0,0.08);
+
+.edit-card{
+    width:100%;
+    max-width:520px;
+    background:rgba(255,255,255,0.75);
+    backdrop-filter:blur(18px);
+    border:1px solid rgba(255,255,255,.4);
+    border-radius:35px;
+    padding:45px;
+    box-shadow:
+    0 20px 50px rgba(0,0,0,.12);
+    animation:fadeUp 1s ease;
+    transition:.4s;
 }
 
-.card-title {
-    font-family: 'Playfair Display', serif;
-    font-size: 26px;
-    color: var(--green);
-    margin-bottom: 6px;
+.edit-card:hover{
+    transform:translateY(-6px);
 }
 
-.card-sub {
-    font-size: 13px;
-    color: #888;
-    margin-bottom: 30px;
+/* ===== TITLE ===== */
+
+.card-title{
+    font-family:'Playfair Display', serif;
+    font-size:42px;
+    color:var(--green);
+    margin-bottom:8px;
+    text-align:center;
 }
 
-/* Section label */
-.section-label {
-    font-size: 12px;
-    font-weight: 600;
-    color: var(--green);
-    text-transform: uppercase;
-    letter-spacing: 1px;
-    margin: 24px 0 14px;
-    padding-bottom: 6px;
-    border-bottom: 1.5px solid #eee;
+.card-sub{
+    text-align:center;
+    color:#888;
+    font-size:14px;
+    margin-bottom:35px;
+    letter-spacing:1px;
 }
 
-/* Form group */
-.form-group {
-    margin-bottom: 16px;
+/* ===== SECTION LABEL ===== */
+
+.section-label{
+    font-size:12px;
+    font-weight:700;
+    color:var(--green);
+    text-transform:uppercase;
+    letter-spacing:2px;
+    margin:30px 0 16px;
+    padding-bottom:10px;
+    border-bottom:1px solid rgba(0,0,0,.08);
 }
 
-.form-group label {
-    display: block;
-    font-size: 13px;
-    color: #555;
-    margin-bottom: 6px;
-    font-weight: 500;
+/* ===== INPUT ===== */
+
+.form-group{
+    margin-bottom:18px;
 }
 
-.form-group input {
-    width: 100%;
-    padding: 12px 16px;
-    background: var(--input-bg);
-    border: none;
-    border-radius: 8px;
-    font-family: 'DM Sans', sans-serif;
-    font-size: 14px;
-    color: #333;
-    outline: none;
-    transition: box-shadow 0.2s;
+.form-group label{
+    display:block;
+    margin-bottom:8px;
+    font-size:14px;
+    color:#555;
+    font-weight:500;
 }
 
-.form-group input:focus {
-    box-shadow: 0 0 0 2px var(--green);
+.form-group input{
+    width:100%;
+    padding:15px 18px;
+    background:var(--input);
+    border:none;
+    border-radius:14px;
+    font-size:14px;
+    font-family:'DM Sans', sans-serif;
+    outline:none;
+    transition:.3s;
+    color:#333;
 }
 
-.form-group small {
-    display: block;
-    font-size: 11px;
-    color: #aaa;
-    margin-top: 4px;
+.form-group input:focus{
+    background:white;
+    box-shadow:
+    0 0 0 2px rgba(36,67,54,.15),
+    0 8px 20px rgba(0,0,0,.05);
 }
 
-/* Pesan */
-.pesan-sukses {
-    background: #e6f4ea;
-    color: #2d7a2d;
-    padding: 12px 16px;
-    border-radius: 8px;
-    font-size: 13px;
-    font-weight: 500;
-    margin-bottom: 20px;
+.form-group small{
+    display:block;
+    margin-top:6px;
+    color:#aaa;
+    font-size:11px;
 }
 
-.error-box {
-    background: #fdecea;
-    border-left: 4px solid var(--red);
-    border-radius: 8px;
-    padding: 12px 16px;
-    margin-bottom: 20px;
+/* ===== SUCCESS ===== */
+
+.pesan-sukses{
+    background:#ebf8ee;
+    color:#2e7d32;
+    padding:14px 18px;
+    border-radius:14px;
+    margin-bottom:22px;
+    font-size:13px;
+    font-weight:500;
 }
 
-.error-box p {
-    color: var(--red);
-    font-size: 13px;
-    margin-bottom: 3px;
+/* ===== ERROR ===== */
+
+.error-box{
+    background:#fff1f1;
+    border-left:4px solid var(--red);
+    border-radius:14px;
+    padding:14px 18px;
+    margin-bottom:22px;
 }
 
-.error-box p:last-child { margin-bottom: 0; }
-
-/* Buttons */
-.btn-group {
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-    margin-top: 28px;
+.error-box p{
+    color:var(--red);
+    font-size:13px;
+    margin-bottom:5px;
 }
 
-.btn-simpan {
-    width: 100%;
-    padding: 13px;
-    background: var(--green);
-    color: white;
-    border: none;
-    border-radius: 10px;
-    font-family: 'DM Sans', sans-serif;
-    font-size: 15px;
-    font-weight: 500;
-    cursor: pointer;
-    transition: background 0.2s, transform 0.15s;
+/* ===== BUTTON ===== */
+
+.btn-group{
+    margin-top:35px;
+    display:flex;
+    flex-direction:column;
+    gap:14px;
 }
 
-.btn-simpan:hover {
-    background: #1e3a1d;
-    transform: translateY(-1px);
+.btn-simpan{
+    width:100%;
+    padding:15px;
+    border:none;
+    border-radius:16px;
+    background:
+    linear-gradient(135deg,var(--green),var(--green2));
+    color:white;
+    font-size:15px;
+    font-weight:600;
+    font-family:'DM Sans', sans-serif;
+    cursor:pointer;
+    transition:.35s;
+    box-shadow:0 10px 25px rgba(36,67,54,.25);
 }
 
-.btn-back {
-    display: block;
-    width: 100%;
-    padding: 12px;
-    background: white;
-    color: #555;
-    border: 1.5px solid #ccc;
-    border-radius: 10px;
-    font-family: 'DM Sans', sans-serif;
-    font-size: 14px;
-    text-align: center;
-    text-decoration: none;
-    transition: border-color 0.2s, color 0.2s;
+.btn-simpan:hover{
+    transform:translateY(-3px);
+    box-shadow:0 16px 30px rgba(36,67,54,.3);
 }
 
-.btn-back:hover {
-    border-color: var(--green);
-    color: var(--green);
+/* ===== BACK BUTTON ===== */
+
+.btn-back{
+    width:100%;
+    padding:14px;
+    border-radius:16px;
+    text-align:center;
+    text-decoration:none;
+    background:white;
+    color:#555;
+    border:1px solid rgba(0,0,0,.08);
+    transition:.3s;
+    font-size:14px;
+    font-weight:500;
 }
+
+.btn-back:hover{
+    background:var(--green);
+    color:white;
+}
+
+/* ===== ANIMATION ===== */
+
+@keyframes fadeUp{
+
+    from{
+        opacity:0;
+        transform:translateY(40px);
+    }
+
+    to{
+        opacity:1;
+        transform:translateY(0);
+    }
+
+}
+
+/* ===== MOBILE ===== */
+
+@media(max-width:768px){
+
+    .edit-card{
+        padding:35px 25px;
+        border-radius:28px;
+    }
+
+    .card-title{
+        font-size:34px;
+    }
+
+    .bg-text{
+        font-size:70px;
+    }
+
+}
+
 </style>
 </head>
 
@@ -257,6 +378,8 @@ body {
 <?php include "layout/header.html"; ?>
 
 <div class="page-wrapper">
+    <div class="bg-text">SKINLAB</div>
+
     <div class="edit-card">
 
         <h2 class="card-title">Edit Profile</h2>
