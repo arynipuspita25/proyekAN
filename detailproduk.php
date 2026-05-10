@@ -263,11 +263,11 @@ hr {
 
 /* ADD TO CART */
 .cart-btn {
-    background: #ffb6c1;
+    background: #2d4d2c;
     border: none;
     padding: 14px 30px;
     border-radius: 30px;
-    color: #333;
+    color: #eae8e8;
     font-size: 14px;
     cursor: pointer;
     transition: 0.3s ease;
@@ -313,11 +313,15 @@ hr {
 
 /* DESCRIPTION */
 .description {
-    padding: 40px 8vw;
-    line-height: 1.8;
+    width: 90%;
+    padding-inline: 5vw;
+    padding-block: 20px;
+
+    line-height: 1.3;
+    text-align: justify;
+
     color: #444;
-    max-width: 900px;
-    font-size: 15px;
+    font-size: 18px;
 }
 
 /* =========================
