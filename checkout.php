@@ -442,7 +442,7 @@ body {
                 <label>Payment Method</label>
                 <div class="payment-options">
                     <?php
-                    $payments = ['QRIS', 'Transfer Bank', 'COD'];
+                    $payments = ['QRIS'];
                     foreach ($payments as $pm):
                         $checked = (($_POST['payment_method'] ?? '') === $pm) ? 'checked' : '';
                     ?>
