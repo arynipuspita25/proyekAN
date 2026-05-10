@@ -19,12 +19,10 @@ if (isset($_POST['simpan'])) {
     $password_baru = trim($_POST['password_baru'] ?? '');
     $konfirmasi    = trim($_POST['konfirmasi'] ?? '');
 
-    // Validasi username
     if (!$username_baru) {
         $errors[] = "Username tidak boleh kosong.";
     }
 
-    // Cek apakah username sudah dipakai user lain
     $cek = mysqli_fetch_assoc(mysqli_query($db, "
         SELECT * FROM users WHERE username = '$username_baru' AND id_user != '$id_user'
     "));
@@ -32,7 +30,6 @@ if (isset($_POST['simpan'])) {
         $errors[] = "Username sudah digunakan akun lain.";
     }
 
-    // Kalau mau ganti password
     $ganti_password = false;
     if ($password_lama || $password_baru || $konfirmasi) {
         $hash_lama = hash('sha256', $password_lama);
@@ -61,11 +58,9 @@ if (isset($_POST['simpan'])) {
             ");
         }
 
-        // Update session
         $_SESSION['username'] = $username_baru;
         $pesan_sukses = "Profil berhasil diperbarui!";
 
-        // Refresh data user
         $user = mysqli_fetch_assoc(mysqli_query($db, "SELECT * FROM users WHERE id_user = '$id_user'"));
     }
 }
@@ -109,8 +104,6 @@ body{
     position:relative;
 }
 
-/* ===== BACKGROUND GLOW ===== */
-
 body::before{
     content:'';
     position:fixed;
@@ -137,8 +130,6 @@ body::after{
     z-index:-2;
 }
 
-/* ===== WRAPPER ===== */
-
 .page-wrapper{
     min-height:100vh;
     display:flex;
@@ -147,8 +138,6 @@ body::after{
     padding:120px 20px 70px;
     position:relative;
 }
-
-/* ===== BACK TEXT ===== */
 
 .bg-text{
     position:absolute;
@@ -163,8 +152,6 @@ body::after{
     z-index:-1;
     user-select:none;
 }
-
-/* ===== CARD ===== */
 
 .edit-card{
     width:100%;
@@ -184,8 +171,6 @@ body::after{
     transform:translateY(-6px);
 }
 
-/* ===== TITLE ===== */
-
 .card-title{
     font-family:'Playfair Display', serif;
     font-size:42px;
@@ -202,8 +187,6 @@ body::after{
     letter-spacing:1px;
 }
 
-/* ===== SECTION LABEL ===== */
-
 .section-label{
     font-size:12px;
     font-weight:700;
@@ -214,8 +197,6 @@ body::after{
     padding-bottom:10px;
     border-bottom:1px solid rgba(0,0,0,.08);
 }
-
-/* ===== INPUT ===== */
 
 .form-group{
     margin-bottom:18px;
@@ -256,8 +237,6 @@ body::after{
     font-size:11px;
 }
 
-/* ===== SUCCESS ===== */
-
 .pesan-sukses{
     background:#ebf8ee;
     color:#2e7d32;
@@ -267,8 +246,6 @@ body::after{
     font-size:13px;
     font-weight:500;
 }
-
-/* ===== ERROR ===== */
 
 .error-box{
     background:#fff1f1;
@@ -283,8 +260,6 @@ body::after{
     font-size:13px;
     margin-bottom:5px;
 }
-
-/* ===== BUTTON ===== */
 
 .btn-group{
     margin-top:35px;
@@ -314,8 +289,6 @@ body::after{
     box-shadow:0 16px 30px rgba(36,67,54,.3);
 }
 
-/* ===== BACK BUTTON ===== */
-
 .btn-back{
     width:100%;
     padding:14px;
@@ -335,8 +308,6 @@ body::after{
     color:white;
 }
 
-/* ===== ANIMATION ===== */
-
 @keyframes fadeUp{
 
     from{
@@ -350,8 +321,6 @@ body::after{
     }
 
 }
-
-/* ===== MOBILE ===== */
 
 @media(max-width:768px){
 
@@ -385,7 +354,6 @@ body::after{
         <h2 class="card-title">Edit Profile</h2>
         <p class="card-sub">Perbarui username atau password kamu</p>
 
-        <!-- Pesan -->
         <?php if ($pesan_sukses): ?>
             <div class="pesan-sukses">✅ <?= $pesan_sukses ?></div>
         <?php endif; ?>
@@ -400,7 +368,6 @@ body::after{
 
         <form method="POST">
 
-            <!-- USERNAME -->
             <div class="section-label">Informasi Akun</div>
 
             <div class="form-group">
@@ -410,7 +377,6 @@ body::after{
                        placeholder="Masukkan username baru">
             </div>
 
-            <!-- PASSWORD -->
             <div class="section-label">Ganti Password <span style="font-weight:300;text-transform:none;letter-spacing:0">(opsional)</span></div>
 
             <div class="form-group">

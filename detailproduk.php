@@ -72,12 +72,10 @@ if (isset($_POST['add'])) {
 
 <div class="product-detail">
 
-    <!-- KIRI -->
     <div class="product-image">
         <img src="img/<?= $data['gambar']; ?>">
     </div>
 
-    <!-- KANAN -->
     <div class="product-info">
 
         <h2><?= $data['nama_produk']; ?></h2>
@@ -94,7 +92,6 @@ if (isset($_POST['add'])) {
 
         <hr>
 
-        <!-- FORM -->
         <form method="POST">
             <input type="hidden" name="id_produk" value="<?= $id ?>">
 
@@ -110,7 +107,6 @@ if (isset($_POST['add'])) {
 
             <br><br>
 
-            <!-- PESAN -->
             <?php if ($pesan_sukses): ?>
                 <p class="pesan-sukses"><?= $pesan_sukses ?></p>
             <?php endif; ?>
@@ -134,7 +130,6 @@ if (isset($_POST['add'])) {
     </div>
 </div>
 
-<!-- DESKRIPSI -->
 <div class="description">
     <p><?= nl2br($data['deskripsi']); ?></p>
 </div>
@@ -148,9 +143,6 @@ body {
     background: #f3eee9;
 }
 
-/* =========================
-   MAIN WRAPPER
-========================= */
 .product-detail {
     display: flex;
     gap: 80px;
@@ -161,9 +153,6 @@ body {
     box-sizing: border-box;
 }
 
-/* =========================
-   LEFT IMAGE (lebih balance)
-========================= */
 .product-image {
     flex: 1;
     display: flex;
@@ -182,22 +171,17 @@ body {
     transform: scale(1.03);
 }
 
-/* =========================
-   RIGHT CONTENT (lebih dominan sedikit)
-========================= */
 .product-info {
     flex: 1.2;
     max-width: 600px;
 }
 
-/* TITLE */
 .product-info h2 {
     font-size: 28px;
     color: #2d4d2c;
     font-weight: 600;
 }
 
-/* PRICE */
 .price {
     color: #e0a94f;
     font-size: 38px;
@@ -205,7 +189,6 @@ body {
     font-weight: bold;
 }
 
-/* BENEFITS */
 .benefits {
     list-style: none;
     padding: 0;
@@ -218,7 +201,6 @@ body {
     font-size: 14px;
 }
 
-/* DIVIDER */
 hr {
     border: none;
     height: 1px;
@@ -226,7 +208,6 @@ hr {
     margin: 25px 0;
 }
 
-/* QTY */
 .qty-box {
     display: inline-flex;
     align-items: center;
@@ -253,7 +234,6 @@ hr {
     font-weight: bold;
 }
 
-/* BUTTON GROUP */
 .tombol-group {
     display: flex;
     align-items: center;
@@ -261,7 +241,6 @@ hr {
     margin-top: 20px;
 }
 
-/* ADD TO CART */
 .cart-btn {
     background: #2d4d2c;
     border: none;
@@ -278,7 +257,6 @@ hr {
     transform: translateY(-2px);
 }
 
-/* CART LINK */
 .lihat-cart-btn {
     background: #2d4d2c;
     color: white;
@@ -293,7 +271,6 @@ hr {
     background: #1e3a1d;
 }
 
-/* MESSAGE */
 .pesan-sukses {
     color: #2d7a2d;
     background: #e6f4ea;
@@ -311,7 +288,6 @@ hr {
     margin-bottom: 12px;
 }
 
-/* DESCRIPTION */
 .description {
     width: 90%;
     padding-inline: 5vw;
@@ -324,9 +300,6 @@ hr {
     font-size: 18px;
 }
 
-/* =========================
-   RESPONSIVE
-========================= */
 @media (max-width: 900px) {
     .product-detail {
         flex-direction: column;

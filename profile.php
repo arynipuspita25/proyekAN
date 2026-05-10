@@ -10,7 +10,6 @@ if (!isset($_SESSION['id_user'])) {
 $id_user  = $_SESSION['id_user'];
 $username = $_SESSION['username'];
 
-// Ambil data user
 $user = mysqli_fetch_assoc(mysqli_query($db, "SELECT * FROM users WHERE id_user = '$id_user'"));
 ?>
 
@@ -48,8 +47,6 @@ body{
     overflow-x:hidden;
 }
 
-/* ===== WRAPPER ===== */
-
 .page-wrapper{
     min-height:100vh;
     display:flex;
@@ -58,8 +55,6 @@ body{
     padding:120px 20px 60px;
     position:relative;
 }
-
-/* ===== GLOW ===== */
 
 .page-wrapper::before{
     content:'';
@@ -87,8 +82,6 @@ body{
     z-index:-1;
 }
 
-/* ===== CARD ===== */
-
 .profile-card{
     width:100%;
     max-width:470px;
@@ -107,8 +100,6 @@ body{
     transform:translateY(-8px);
 }
 
-/* ===== HEADER ===== */
-
 .profile-header{
     background:
     linear-gradient(135deg,var(--green),var(--green2));
@@ -120,8 +111,6 @@ body{
     position:relative;
 }
 
-/* ===== GOLD LINE ===== */
-
 .profile-header::after{
     content:'';
     width:120px;
@@ -132,8 +121,6 @@ body{
     left:50%;
     transform:translateX(-50%);
 }
-
-/* ===== AVATAR ===== */
 
 .avatar{
     width:110px;
@@ -155,8 +142,6 @@ body{
     fill:white;
 }
 
-/* ===== NAME ===== */
-
 .profile-header h2{
     font-family:'Playfair Display', serif;
     color:white;
@@ -172,14 +157,10 @@ body{
     letter-spacing:2px;
 }
 
-/* ===== MENU ===== */
-
 .profile-menu{
     list-style:none;
     padding:20px;
 }
-
-/* ===== ITEM ===== */
 
 .profile-menu li{
     margin-bottom:16px;
@@ -210,8 +191,6 @@ body{
     stroke:white;
 }
 
-/* ===== ICON ===== */
-
 .profile-menu li a svg{
     width:22px;
     height:22px;
@@ -220,8 +199,6 @@ body{
     stroke-width:2;
     transition:.3s;
 }
-
-/* ===== LOGOUT ===== */
 
 .profile-menu li.logout a{
     background:#fff1f3;
@@ -241,8 +218,6 @@ body{
     stroke:white;
 }
 
-/* ===== ANIMATION ===== */
-
 @keyframes fadeUp{
     from{
         opacity:0;
@@ -254,8 +229,6 @@ body{
         transform:translateY(0);
     }
 }
-
-/* ===== MOBILE ===== */
 
 @media(max-width:768px){
 
@@ -279,7 +252,6 @@ body{
 <div class="page-wrapper">
     <div class="profile-card">
 
-        <!-- Header -->
         <div class="profile-header">
             <div class="avatar">
                 <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
@@ -289,7 +261,6 @@ body{
             <h2><?= htmlspecialchars($user['username']) ?></h2>
         </div>
 
-        <!-- Menu -->
         <ul class="profile-menu">
 
             <li>

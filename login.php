@@ -45,11 +45,11 @@
 </head>
 <body>
     
-    <div class="login-container"> <!-- TAMBAHAN -->
+    <div class="login-container"> 
 
-    <div class="login-left"> <!-- TAMBAHAN -->
+    <div class="login-left"> 
 
-        <h3>LOGIN</h3> <!-- UBAH teks -->
+        <h3>LOGIN</h3> 
 
         <i><?= $login_message ?></i>
 
@@ -59,16 +59,16 @@
             <button type="submit" name="login">Login Now</button>
         </form>
 
-        <p>Not a member? <a href="register.php">Sign Up</a></p> <!-- TAMBAHAN -->
+        <p>Not a member? <a href="register.php">Sign Up</a></p> 
 
     </div>
 
-    <div class="login-right"></div> <!-- TAMBAHAN -->
+    <div class="login-right"></div> 
 
 </div>
 </body>
 <style>
-    /* ===== RESET ===== */
+
 * {
     margin: 0;
     padding: 0;
@@ -86,7 +86,6 @@ body {
     align-items: center;
 }
 
-/* ===== LOGIN CONTAINER ===== */
 .login-container {
     display: flex;
     width: 900px; /* atau 80% */
@@ -96,7 +95,6 @@ body {
     overflow: hidden;
     box-shadow: 0 10px 30px rgba(0,0,0,0.1);
 }
-/* ===== LOGIN LEFT (FORM) ===== */
 .login-left {
     flex: 1;
     background-color: #e8dfd8;
@@ -132,7 +130,7 @@ body {
 .login-left input {
     margin-bottom: 10px;
 }
-/* ===== LOGIN RIGHT (IMAGE) ===== */
+
 .login-right {
     flex: 1;
     background: url('img/serum.jpeg') center/cover no-repeat;

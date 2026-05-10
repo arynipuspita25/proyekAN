@@ -10,7 +10,6 @@ if (!isset($_SESSION['id_user']) || !isset($_SESSION['id_order'])) {
 $id_user  = $_SESSION['id_user'];
 $id_order = $_SESSION['id_order'];
 
-// Ambil data order
 $order = mysqli_fetch_assoc(mysqli_query($db, "
     SELECT * FROM order_produk WHERE id_order = '$id_order' AND id_user = '$id_user'
 "));
@@ -20,7 +19,6 @@ if (!$order) {
     exit;
 }
 
-// Ambil detail produk
 $details = [];
 $result = mysqli_query($db, "
     SELECT order_detail.*, produk.nama_produk, produk.harga_produk
@@ -32,11 +30,9 @@ while ($row = mysqli_fetch_assoc($result)) {
     $details[] = $row;
 }
 
-// Invoice number
 $invoice_no = 'INV-' . str_pad($id_order, 3, '0', STR_PAD_LEFT);
 $tanggal    = date('d F Y', strtotime($order['created_at']));
 
-// Proses check payment
 if (isset($_POST['check_payment'])) {
     // Update status jadi success
     mysqli_query($db, "UPDATE order_produk SET status_pembayaran='success' WHERE id_order='$id_order'");
@@ -76,7 +72,6 @@ body {
     padding: 0 20px 80px;
 }
 
-/* ===== INVOICE CARD ===== */
 .invoice-card {
     background: var(--white);
     border-radius: 20px;
@@ -125,7 +120,6 @@ body {
     line-height: 1.7;
 }
 
-/* Table */
 .invoice-table {
     width: 100%;
     border-collapse: collapse;
@@ -173,7 +167,6 @@ body {
     margin-top: 6px;
 }
 
-/* Payment method */
 .payment-section {
     margin-top: 24px;
 }
@@ -185,7 +178,6 @@ body {
     margin-bottom: 12px;
 }
 
-/* QR Code */
 .qr-box {
     display: flex;
     align-items: center;
@@ -214,14 +206,12 @@ body {
     margin-bottom: 4px;
 }
 
-/* Divider */
 .divider {
     border: none;
     border-top: 1.5px dashed #ddd;
     margin: 24px 0;
 }
 
-/* Button */
 .btn-check {
     display: block;
     width: 100%;
@@ -261,19 +251,16 @@ body {
 <div class="page-wrapper">
     <div class="invoice-card">
 
-        <!-- Brand -->
         <div class="invoice-brand">
             <h2>AN Skin Lab</h2>
             <p>Invoice</p>
         </div>
 
-        <!-- Meta -->
         <div class="invoice-meta">
             <div>Invoice No: <strong><?= $invoice_no ?></strong></div>
             <div>Date: <?= $tanggal ?></div>
         </div>
 
-        <!-- Bill To -->
         <div class="bill-to">
             <strong>Bill To:</strong>
             <p>
@@ -285,7 +272,6 @@ body {
 
         <hr class="divider">
 
-        <!-- Produk -->
         <table class="invoice-table">
             <thead>
                 <tr>
@@ -305,7 +291,6 @@ body {
             </tbody>
         </table>
 
-        <!-- Totals -->
         <div class="invoice-totals">
             <div class="row">
                 <span>Subtotal</span>
@@ -323,7 +308,6 @@ body {
 
         <hr class="divider">
 
-        <!-- Payment -->
         <div class="payment-section">
             <p>Payment Method: <?= htmlspecialchars($order['payment_method']) ?></p>
 
@@ -340,7 +324,6 @@ body {
             </div>
         </div>
 
-        <!-- Check Payment -->
         <form method="POST">
             <button type="submit" name="check_payment" class="btn-check">
                 ✓ Check Payment

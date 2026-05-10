@@ -9,10 +9,6 @@ if (!isset($_SESSION['id_user'])) {
 
 $id_user = $_SESSION['id_user'];
 
-/* =========================
-   AMBIL ORDER
-========================= */
-
 $orders = [];
 
 $result = mysqli_query($db, "
@@ -24,10 +20,6 @@ $result = mysqli_query($db, "
 while ($row = mysqli_fetch_assoc($result)) {
     $orders[] = $row;
 }
-
-/* =========================
-   DETAIL ORDER
-========================= */
 
 foreach ($orders as &$order) {
 
@@ -90,10 +82,6 @@ body{
     min-height:100vh;
 }
 
-/* =========================
-   PAGE
-========================= */
-
 .page-wrapper{
     max-width:1200px;
     margin:40px auto;
@@ -108,10 +96,6 @@ body{
     font-weight:700;
     text-align:center;
 }
-
-/* =========================
-   RECEIPT CARD
-========================= */
 
 .receipt-card{
 
@@ -132,18 +116,10 @@ body{
     1.1fr 0.9fr;
 }
 
-/* =========================
-   LEFT
-========================= */
-
 .receipt-left{
     padding:45px;
     background:#f4efe8;
 }
-
-/* =========================
-   BRAND
-========================= */
 
 .receipt-brand h3{
     font-family:'Playfair Display', serif;
@@ -160,10 +136,6 @@ body{
     text-transform:uppercase;
     margin-bottom:35px;
 }
-
-/* =========================
-   META
-========================= */
 
 .receipt-meta{
     display:flex;
@@ -185,19 +157,11 @@ body{
     font-size:15px;
 }
 
-/* =========================
-   DIVIDER
-========================= */
-
 .divider{
     border:none;
     border-top:1.5px dashed #ddd;
     margin:22px 0;
 }
-
-/* =========================
-   SECTION
-========================= */
 
 .section-title{
     font-size:25px;
@@ -206,19 +170,11 @@ body{
     margin-bottom:12px;
 }
 
-/* =========================
-   CUSTOMER
-========================= */
-
 .customer-details{
     font-size:15px;
     line-height:1.9;
     color:#555;
 }
-
-/* =========================
-   TABLE
-========================= */
 
 .order-table{
     width:100%;
@@ -245,10 +201,6 @@ body{
     text-align:right;
 }
 
-/* =========================
-   TOTALS
-========================= */
-
 .totals{
     margin-top:22px;
 }
@@ -270,10 +222,6 @@ body{
     color:var(--pink);
 }
 
-/* =========================
-   BOTTOM GRID
-========================= */
-
 .bottom-grid{
     display:flex;
     gap:40px;
@@ -293,10 +241,6 @@ body{
     font-size:15px;
     color:#333;
 }
-
-/* =========================
-   STATUS
-========================= */
 
 .status-badge{
     display:inline-flex;
@@ -318,20 +262,12 @@ body{
     color:#b8860b;
 }
 
-/* =========================
-   FOOTER
-========================= */
-
 .receipt-footer{
     margin-top:30px;
     font-size:13px;
     color:#777;
     font-style:italic;
 }
-
-/* =========================
-   RIGHT IMAGE
-========================= */
 
 .receipt-right{
     position:relative;
@@ -343,10 +279,6 @@ body{
     height:100%;
     object-fit:cover;
 }
-
-/* =========================
-   EMPTY
-========================= */
 
 .empty-state{
     text-align:center;
@@ -368,10 +300,6 @@ body{
     border-radius:18px;
     font-weight:600;
 }
-
-/* =========================
-   MOBILE
-========================= */
 
 @media(max-width:950px){
 
@@ -444,11 +372,8 @@ body{
 
     <div class="receipt-card">
 
-        <!-- LEFT -->
 
         <div class="receipt-left">
-
-            <!-- BRAND -->
 
             <div class="receipt-brand">
 
@@ -457,8 +382,6 @@ body{
                 <p>Luxury Skincare Invoice</p>
 
             </div>
-
-            <!-- META -->
 
             <div class="receipt-meta">
 
@@ -476,8 +399,6 @@ body{
 
             <hr class="divider">
 
-            <!-- CUSTOMER -->
-
             <div class="section-title">
                 Bill To
             </div>
@@ -493,8 +414,6 @@ body{
             </div>
 
             <hr class="divider">
-
-            <!-- TABLE -->
 
             <div class="section-title">
                 Order Summary
@@ -538,8 +457,6 @@ body{
 
             </table>
 
-            <!-- TOTAL -->
-
             <div class="totals">
 
                 <div class="row">
@@ -579,8 +496,6 @@ body{
 
             <hr class="divider">
 
-            <!-- PAYMENT -->
-
             <div class="bottom-grid">
 
                 <div class="info-box">
@@ -617,8 +532,6 @@ body{
             </div>
 
         </div>
-
-        <!-- RIGHT IMAGE -->
 
         <div class="receipt-right">
 

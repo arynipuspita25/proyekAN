@@ -40,7 +40,6 @@ $username = $_SESSION['username'] ?? 'Guest';
         overflow-x: hidden;
     }
 
-    /* ===== WELCOME BANNER ===== */
     .welcome-bar {
         background: var(--green);
         color: rgba(255,255,255,0.85);
@@ -55,7 +54,6 @@ $username = $_SESSION['username'] ?? 'Guest';
         font-weight: 500;
     }
 
-    /* ===== HERO ===== */
     .hero {
         min-height: 92vh;
         display: grid;
@@ -64,7 +62,6 @@ $username = $_SESSION['username'] ?? 'Guest';
         overflow: hidden;
     }
 
-    /* Kiri */
     .hero-left {
         background: var(--green);
         display: flex;
@@ -168,7 +165,6 @@ $username = $_SESSION['username'] ?? 'Guest';
         background: rgba(255,255,255,0.08);
     }
 
-    /* Dekorasi lingkaran */
     .hero-deco {
         position: absolute;
         bottom: -80px;
@@ -191,7 +187,6 @@ $username = $_SESSION['username'] ?? 'Guest';
         pointer-events: none;
     }
 
-    /* Kanan */
     .hero-right {
         background: var(--beige);
         position: relative;
@@ -206,7 +201,6 @@ $username = $_SESSION['username'] ?? 'Guest';
         animation: fadeIn 1s 0.5s forwards;
     }
 
-    /* Fallback kalau gambar tidak ada */
     .hero-right-fallback {
         width: 100%;
         height: 100%;
@@ -226,7 +220,6 @@ $username = $_SESSION['username'] ?? 'Guest';
         letter-spacing: -2px;
     }
 
-    /* Tag label di hero */
     .hero-tag {
         position: absolute;
         bottom: 40px;
@@ -259,7 +252,6 @@ $username = $_SESSION['username'] ?? 'Guest';
     .hero-tag p { font-size: 12px; color: #555; line-height: 1.4; }
     .hero-tag strong { display: block; font-size: 13px; color: var(--green); }
 
-    /* ===== STATS BAR ===== */
     .stats-bar {
         background: var(--white);
         display: grid;
@@ -291,7 +283,6 @@ $username = $_SESSION['username'] ?? 'Guest';
         text-transform: uppercase;
     }
 
-    /* ===== FEATURED SECTION ===== */
     .section {
         padding: 80px 60px;
     }
@@ -331,7 +322,6 @@ $username = $_SESSION['username'] ?? 'Guest';
 
     .section-link:hover { opacity: 0.6; }
 
-    /* Feature cards */
     .features-grid {
         display: grid;
         grid-template-columns: repeat(3, 1fr);
@@ -389,7 +379,6 @@ $username = $_SESSION['username'] ?? 'Guest';
         line-height: 1.7;
     }
 
-    /* ===== BANNER CTA ===== */
     .banner-cta {
         margin: 0 60px 80px;
         background: var(--green);
@@ -441,7 +430,6 @@ $username = $_SESSION['username'] ?? 'Guest';
         line-height: 1.7;
     }
 
-    /* ===== FOOTER ===== */
     .footer {
         background: var(--green2);
         color: rgba(255,255,255,0.5);
@@ -453,7 +441,6 @@ $username = $_SESSION['username'] ?? 'Guest';
 
     .footer span { color: var(--gold); }
 
-    /* ===== ANIMATIONS ===== */
     @keyframes fadeUp {
         from { opacity: 0; transform: translateY(24px); }
         to   { opacity: 1; transform: translateY(0); }
@@ -464,7 +451,6 @@ $username = $_SESSION['username'] ?? 'Guest';
         to   { opacity: 1; }
     }
 
-    /* ===== RESPONSIVE ===== */
     @media (max-width: 900px) {
         .hero { grid-template-columns: 1fr; min-height: auto; }
         .hero-right { height: 300px; }
@@ -481,14 +467,12 @@ $username = $_SESSION['username'] ?? 'Guest';
 </head>
 <body>
 
-<!-- Welcome bar -->
 <div class="welcome-bar">
     Halo, <span><?= htmlspecialchars($username) ?></span> — Selamat datang kembali di AN Skin Lab ✨
 </div>
 
 <?php include "layout/header.html"; ?>
 
-<!-- ===== HERO ===== -->
 <section class="hero">
 
     <div class="hero-left">
@@ -515,7 +499,6 @@ $username = $_SESSION['username'] ?? 'Guest';
     </div>
 
     <div class="hero-right">
-        <!-- Ganti src dengan gambar hero kamu -->
         <img src="img/face.jpeg" alt="AN Skin Lab"
              onerror="this.style.display='none'; this.nextElementSibling.style.display='flex'">
         <div class="hero-right-fallback" style="display:none">
@@ -533,7 +516,6 @@ $username = $_SESSION['username'] ?? 'Guest';
 
 </section>
 
-<!-- ===== STATS ===== -->
 <div class="stats-bar">
     <div class="stat-item">
         <div class="stat-number">1009+</div>
@@ -549,7 +531,6 @@ $username = $_SESSION['username'] ?? 'Guest';
     </div>
 </div>
 
-<!-- ===== FEATURES ===== -->
 <section class="section">
     <div class="section-header">
         <div>
@@ -578,7 +559,6 @@ $username = $_SESSION['username'] ?? 'Guest';
     </div>
 </section>
 
-<!-- ===== BANNER CTA ===== -->
 <div class="banner-cta">
     <div class="banner-cta-text">
         <p class="eyebrow">Limited Time Offer</p>
@@ -590,7 +570,6 @@ $username = $_SESSION['username'] ?? 'Guest';
     </a>
 </div>
 
-<!-- ===== FOOTER ===== -->
 <div class="footer">
     © 2024 <span>AN Skin Lab</span> · Natural Skincare for Your Glow
 </div>

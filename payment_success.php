@@ -36,7 +36,6 @@ body{
     font-family:'Poppins', sans-serif;
     min-height:100vh;
 
-    /* BACKGROUND */
     background-image:
     linear-gradient(rgba(255,255,255,0.60), rgba(255,255,255,0.60)),
     url("asset/img/ABOUT4.jpg");
@@ -47,8 +46,6 @@ body{
     background-attachment:fixed;
 }
 
-/* ===== CONTENT ===== */
-
 .success-container{
     min-height:calc(100vh - 90px);
 
@@ -58,8 +55,6 @@ body{
 
     padding:40px 20px;
 }
-
-/* ===== CARD ===== */
 
 .success-card{
 
@@ -80,8 +75,6 @@ body{
 
     animation:fadeIn .6s ease;
 }
-
-/* ===== CHECK ICON ===== */
 
 .check-wrapper{
 
@@ -144,8 +137,6 @@ body{
     stroke-linejoin:round;
 }
 
-/* ===== TEXT ===== */
-
 .success-title{
 
     font-size:56px;
@@ -167,8 +158,6 @@ body{
 
     margin-bottom:42px;
 }
-
-/* ===== BUTTON ===== */
 
 .btn-shopping{
 
@@ -203,8 +192,6 @@ body{
     transform:translateY(-3px);
 }
 
-/* ===== HISTORY LINK ===== */
-
 .history-link{
 
     display:inline-block;
@@ -223,8 +210,6 @@ body{
     text-decoration:underline;
 }
 
-/* ===== ANIMATION ===== */
-
 @keyframes fadeIn{
 
     from{
@@ -237,8 +222,6 @@ body{
         transform:translateY(0) scale(1);
     }
 }
-
-/* ===== RESPONSIVE ===== */
 
 @media(max-width:768px){
 
@@ -277,15 +260,12 @@ body{
 
 <body>
 
-<!-- NAVBAR -->
 <?php include "layout/header.html"; ?>
 
-<!-- CONTENT -->
 <div class="success-container">
 
     <div class="success-card">
 
-        <!-- CHECK ICON -->
         <div class="check-wrapper">
 
             <div class="check-icon">
@@ -298,24 +278,20 @@ body{
 
         </div>
 
-        <!-- TITLE -->
         <h1 class="success-title">
             Payment Successful
         </h1>
 
-        <!-- SUBTITLE -->
         <p class="success-subtitle">
             Thank you for your purchase! Your payment was successful.
         </p>
 
-        <!-- BUTTON -->
         <a href="product.php" class="btn-shopping">
             Continue Shopping
         </a>
 
         <br>
 
-        <!-- HISTORY -->
         <a href="riwayat.php" class="history-link">
             Lihat Riwayat Pembelian →
         </a>

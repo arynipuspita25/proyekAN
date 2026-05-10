@@ -29,12 +29,10 @@ $result = mysqli_query($db, $query);
 
 <div class="hero">
 
-    <!-- kiri -->
     <div class="hero-left">
         <img src="img/keriting.jpg">
     </div>
 
-    <!-- kanan -->
     <div class="hero-center">
 
         <div class="hero-top">
@@ -107,14 +105,12 @@ body{
     -webkit-font-smoothing:antialiased;
 }
 
-/* HERO */
 .hero{
     display:flex;
     width:100%;
     background:#FCF0EE;
 }
 
-/* LEFT IMAGE */
 .hero-left{
     width:65%;
 }
@@ -126,7 +122,6 @@ body{
     display:block;
 }
 
-/* RIGHT TEXT */
 .hero-center{
     width:35%;
     padding:60px 35px;
@@ -165,7 +160,6 @@ body{
     margin-bottom:35px;
 }
 
-/* SEARCH */
 .hero-center form{
     display:flex;
     align-items:center;
@@ -193,7 +187,6 @@ body{
     font-size:14px;
 }
 
-/* TITLE */
 h2{
     text-align:center;
     margin:50px 0 30px;
@@ -202,7 +195,6 @@ h2{
     font-weight:600;
 }
 
-/* PRODUCT GRID */
 .product-list{
     display:grid;
     grid-template-columns:repeat(3,1fr);
@@ -210,7 +202,6 @@ h2{
     padding:20px 60px 60px;
 }
 
-/* CARD */
 .product-card{
     background:#173d08;
     color:white;
@@ -225,7 +216,6 @@ h2{
     box-shadow:0 10px 25px rgba(0,0,0,0.15);
 }
 
-/* IMAGE */
 .product-card img{
     width:100%;
     height:440px;
@@ -233,7 +223,6 @@ h2{
     border-radius:8px;
 }
 
-/* TEXT */
 .product-card h3{
     font-size:15px;
     margin:12px 0 6px;
@@ -246,7 +235,6 @@ h2{
     line-height:1.4;
 }
 
-/* PRICE */
 .price{
     text-align:right;
     font-size:15px;
@@ -256,7 +244,6 @@ h2{
     font-weight:600;
 }
 
-/* BUTTON */
 .btn-detail{
     display:inline-block;
     padding:10px 18px;
@@ -278,7 +265,6 @@ h2{
     box-shadow:none;
 }
 
-/* RESPONSIVE */
 @media(max-width:900px){
     .hero{
         flex-direction:column;

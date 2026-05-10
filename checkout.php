@@ -379,7 +379,6 @@ body {
 
 <div class="page-wrapper">
 
-    <!-- FORM -->
     <div class="form-card">
         <h2 class="form-title">FORM</h2>
 
@@ -462,7 +461,6 @@ body {
         </form>
     </div>
 
-    <!-- ORDER SUMMARY -->
     <div class="summary-card">
         <h3>Order Summary</h3>
 

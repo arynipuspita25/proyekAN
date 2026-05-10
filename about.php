@@ -26,8 +26,6 @@ body{
     color:#333;
 }
 
-/* ===== HERO ===== */
-
 .hero-about{
     height:75vh;
     background:
@@ -71,13 +69,9 @@ body{
     letter-spacing:2px;
 }
 
-/* ===== SECTION ===== */
-
 .section{
     padding:100px 10%;
 }
-
-/* ===== ROW ===== */
 
 .row{
     display:flex;
@@ -91,8 +85,6 @@ body{
     flex-direction:row-reverse;
 }
 
-/* ===== IMAGE ===== */
-
 .row img{
     width:40%;
     border-radius:25px;
@@ -103,8 +95,6 @@ body{
 .row img:hover{
     transform:scale(1.03);
 }
-
-/* ===== TEXT ===== */
 
 .text{
     width:60%;
@@ -156,8 +146,6 @@ body{
     color:#555;
 }
 
-/* ===== FLOATING BLUR ===== */
-
 .blur1,
 .blur2{
     position:absolute;
@@ -182,8 +170,6 @@ body{
     right:-80px;
 }
 
-/* ===== ANIMATION ===== */
-
 @keyframes fadeUp{
     from{
         opacity:0;
@@ -194,8 +180,6 @@ body{
         transform:translateY(0);
     }
 }
-
-/* ===== RESPONSIVE ===== */
 
 @media(max-width:900px){
 
@@ -226,7 +210,6 @@ body{
 
 <?php include "layout/header.html" ?>
 
-<!-- HERO -->
 <section class="hero-about">
     <div class="hero-content">
         <h1>About Us</h1>
@@ -234,13 +217,11 @@ body{
     </div>
 </section>
 
-<!-- SECTION -->
 <section class="section">
 
 <div class="blur1"></div>
 <div class="blur2"></div>
 
-<!-- WHO WE ARE -->
 <div class="row">
     <img src="img/ABOUT1.jpg">
 
@@ -255,7 +236,6 @@ body{
     </div>
 </div>
 
-<!-- VISION -->
 <div class="row reverse">
     <img src="img/ABOUT2.jpg">
 
@@ -269,7 +249,6 @@ body{
     </div>
 </div>
 
-<!-- MISSION -->
 <div class="row">
     <img src="img/ABOUT3.jpg">
 
@@ -287,7 +266,6 @@ body{
     </div>
 </div>
 
-<!-- WHY -->
 <div class="row reverse">
     <img src="img/ABOUT4.jpg">
 

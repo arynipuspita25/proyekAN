@@ -9,14 +9,12 @@ if (!isset($_SESSION['id_user'])) {
 
 $id_user = $_SESSION['id_user'];
 
-// ================= UPDATE QTY =================
 if (isset($_POST['update'])) {
     foreach ($_POST['qty'] as $id => $quantity) {
         mysqli_query($db, "UPDATE keranjang SET quantity='$quantity' WHERE id_keranjang='$id'");
     }
 }
 
-// ================= DELETE =================
 if (isset($_GET['hapus'])) {
     $id = $_GET['hapus'];
     mysqli_query($db, "DELETE FROM keranjang WHERE id_keranjang='$id'");
@@ -24,7 +22,6 @@ if (isset($_GET['hapus'])) {
     exit;
 }
 
-// ================= AMBIL DATA =================
 $query = "
 SELECT keranjang.*, produk.nama_produk, produk.harga_produk, produk.gambar
 FROM keranjang
@@ -34,7 +31,6 @@ WHERE keranjang.id_user = '$id_user'
 $result = mysqli_query($db, $query);
 $jumlah = mysqli_num_rows($result);
 
-// ================= HITUNG SUBTOTAL =================
 $items = [];
 $subtotal = 0;
 while ($row = mysqli_fetch_assoc($result)) {
@@ -76,7 +72,6 @@ body {
     min-height: 100vh;
 }
 
-/* ===== HEADER CART ===== */
 .cart-header {
     background: var(--green);
     color: white;
@@ -97,14 +92,12 @@ body {
     letter-spacing: 0.5px;
 }
 
-/* ===== LAYOUT ===== */
 .cart-wrapper {
     max-width: 700px;
     margin: 40px auto;
     padding: 0 20px 60px;
 }
 
-/* ===== EMPTY STATE ===== */
 .cart-kosong {
     text-align: center;
     padding: 80px 20px;
@@ -129,7 +122,6 @@ body {
 
 .btn-belanja:hover { background: var(--pink2); }
 
-/* ===== CART ITEM ===== */
 .cart-item {
     background: var(--white);
     border-radius: 18px;
@@ -146,7 +138,6 @@ body {
     transform: translateY(-2px);
 }
 
-/* Checkbox */
 .cart-item input[type="checkbox"] {
     width: 18px;
     height: 18px;
@@ -155,7 +146,6 @@ body {
     flex-shrink: 0;
 }
 
-/* Gambar */
 .cart-item img {
     width: 75px;
     height: 75px;
@@ -164,7 +154,6 @@ body {
     flex-shrink: 0;
 }
 
-/* Info */
 .item-info {
     flex: 1;
     min-width: 0;
@@ -186,7 +175,6 @@ body {
     font-size: 14px;
 }
 
-/* QTY */
 .qty-control {
     display: flex;
     align-items: center;
@@ -231,7 +219,6 @@ body {
     -webkit-appearance: none;
 }
 
-/* Hapus */
 .btn-hapus {
     background: none;
     border: none;
@@ -255,14 +242,12 @@ body {
     stroke: var(--red);
 }
 
-/* ===== DIVIDER ===== */
 .divider {
     border: none;
     border-top: 1.5px dashed #ccc;
     margin: 24px 0 16px;
 }
 
-/* ===== SUBTOTAL ===== */
 .subtotal-row {
     display: flex;
     justify-content: space-between;
@@ -284,7 +269,6 @@ body {
     font-weight: 600;
 }
 
-/* ===== CHECKOUT BTN ===== */
 .checkout-btn {
     width: 100%;
     padding: 16px;
@@ -337,7 +321,6 @@ body {
     transform:translateX(-4px);
 }
 
-/* CENTER ALIGN DI WRAPPER */
 .cart-wrapper{
     max-width:700px;
     margin:40px auto;
@@ -354,7 +337,6 @@ body {
 
 <?php include "layout/header.html"; ?>
 
-<!-- CART HEADER -->
 <div class="cart-header">
     <svg fill="none" stroke="white" stroke-width="2" viewBox="0 0 24 24">
         <path d="M6 2L3 6v14a2 2 0 002 2h14a2 2 0 002-2V6l-3-4z"/>
@@ -366,14 +348,12 @@ body {
    
 <div class="cart-wrapper">
 
-    <!-- BACK BUTTON (FIXED POSITION AREA) -->
     <a href="product.php" class="back-product">
         ← Back to Products
     </a>
 
 <?php if ($jumlah == 0): ?>
 
-    <!-- KOSONG -->
     <div class="cart-kosong">
         <p>🛒 Keranjang kamu masih kosong.</p>
         <a href="product.php" class="btn-belanja">Mulai Belanja</a>
@@ -383,23 +363,18 @@ body {
 
     <form method="POST" action="checkout.php" id="formCart">
 
-        <!-- LIST ITEM -->
         <?php foreach ($items as $row): ?>
         <div class="cart-item">
 
-            <!-- CHECKBOX -->
             <input type="checkbox" name="pilih[]" value="<?= $row['id_keranjang'] ?>" checked>
 
-            <!-- GAMBAR -->
             <img src="img/<?= $row['gambar'] ?>" alt="<?= $row['nama_produk'] ?>">
-
-            <!-- INFO -->
+            
             <div class="item-info">
                 <h3><?= $row['nama_produk'] ?></h3>
                 <div class="harga">Rp <?= number_format($row['harga_produk'], 0, ',', '.') ?></div>
             </div>
 
-            <!-- QTY -->
             <div class="qty-control">
                 <button type="button" onclick="kurang(<?= $row['id_keranjang'] ?>)">−</button>
 
@@ -413,7 +388,6 @@ body {
                 <button type="button" onclick="tambah(<?= $row['id_keranjang'] ?>)">+</button>
             </div>
 
-            <!-- HAPUS -->
             <a href="?hapus=<?= $row['id_keranjang'] ?>" class="btn-hapus"
                onclick="return confirm('Hapus produk ini dari keranjang?')">
                 <svg fill="none" stroke-width="2" viewBox="0 0 24 24">
@@ -427,10 +401,8 @@ body {
         </div>
         <?php endforeach; ?>
 
-        <!-- DIVIDER -->
         <hr class="divider">
 
-        <!-- SUBTOTAL -->
         <div class="subtotal-row">
             <span class="label">Subtotal</span>
             <span class="amount" id="subtotalText">
@@ -438,10 +410,8 @@ body {
             </span>
         </div>
 
-        <!-- TOMBOL UPDATE TERSEMBUNYI -->
         <input type="hidden" name="update" value="1">
 
-        <!-- CHECKOUT -->
         <button type="submit" class="checkout-btn" formaction="checkout.php">
             <svg fill="none" stroke="white" stroke-width="2" viewBox="0 0 24 24">
                 <circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/>
@@ -458,7 +428,6 @@ body {
 
 
 <script>
-// Data harga produk untuk kalkulasi subtotal di client
 const harga = {
     <?php foreach ($items as $row): ?>
     <?= $row['id_keranjang'] ?>: <?= $row['harga_produk'] ?>,
@@ -494,7 +463,6 @@ function hitungSubtotal() {
 }
 
 function simpanQty() {
-    // Auto-submit update qty ke server dengan fetch
     let form = document.getElementById("formCart");
     let data = new FormData(form);
     data.set("update", "1");

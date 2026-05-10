@@ -38,16 +38,16 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=, initial-scale=1.0">
     <title>Document</title>
-    <link rel="stylesheet" href="style.css"> <!-- TAMBAHAN -->
+    <link rel="stylesheet" href="style.css"> 
 </head>
 <body>
      
-    <div class="register-container"> <!-- TAMBAHAN -->
+    <div class="register-container"> 
 
     <div class="register-card">
 
         <div class="register-header">
-            <h3>SIGN UP</h3> <!-- UBAH -->
+            <h3>SIGN UP</h3> 
         </div>
 
         <div class="register-form">
@@ -72,7 +72,6 @@
 </body>
 
 <style>
-    /* ===== RESET ===== */
 * {
     margin: 0;
     padding: 0;
@@ -89,7 +88,6 @@ body {
     align-items: center;
 }
 
-/* ===== REGISTER ===== */
 .register-container {
     display: flex;
     justify-content: center;
