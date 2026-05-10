@@ -77,7 +77,7 @@
 }
 
 body {
-    background-color: #e7e9d0;
+    background-color: #1d3b0b;
     margin: 0;
     height: 100vh;
 

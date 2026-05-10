@@ -104,7 +104,7 @@ body {
     box-shadow: 0 15px 40px rgba(0,0,0,0.1);
 }
 .register-header {
-    background-color: #1f4d1c;
+    background-color: #1d3b0b;
     text-align: center;
     padding: 25px;
 }
@@ -130,7 +130,7 @@ body {
 }
 
 .register-form input:focus {
-    border-color: #1f4d1c;
+    border-color: #1d3b0b;
     box-shadow: 0 0 0 2px rgba(31,77,28,0.1);
 }
 
