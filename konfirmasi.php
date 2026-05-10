@@ -34,7 +34,6 @@ $invoice_no = 'INV-' . str_pad($id_order, 3, '0', STR_PAD_LEFT);
 $tanggal    = date('d F Y', strtotime($order['created_at']));
 
 if (isset($_POST['check_payment'])) {
-    // Update status jadi success
     mysqli_query($db, "UPDATE order_produk SET status_pembayaran='success' WHERE id_order='$id_order'");
     header("Location: payment_success.php");
     exit;
@@ -312,7 +311,6 @@ body {
             <p>Payment Method: <?= htmlspecialchars($order['payment_method']) ?></p>
 
             <div class="qr-box">
-                <!-- QR placeholder — ganti src dengan gambar QRIS asli kamu -->
                 <img src="img/qris.png" alt="QRIS"
                      onerror="this.src='https://api.qrserver.com/v1/create-qr-code/?size=120x120&data=SkinlabPayment<?= $id_order ?>'">
                 <div class="qr-info">
