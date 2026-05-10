@@ -2,7 +2,6 @@
 session_start();
 require "service/database.php";
 
-// Sementara untuk testing
 if (!isset($_SESSION['id_user'])) {
     header("Location: login.php");
     exit;
@@ -10,7 +9,6 @@ if (!isset($_SESSION['id_user'])) {
 
 $id_user = $_SESSION['id_user'];
 
-// ambil id dari product.php
 $id = $_POST['id_produk'] ?? $_GET['id'] ?? 0;
 
 // ambil data produk
