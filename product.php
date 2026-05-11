@@ -74,7 +74,7 @@ $result = mysqli_query($db, $query);
 
 <?php while($row = mysqli_fetch_assoc($result)) : ?>
 
-    <div class="product-card">
+    <a href="detailproduk.php?id=<?= $row['id_produk']; ?>" class="product-card">
 
         <img src="img/<?= $row['gambar']; ?>">
 
@@ -84,7 +84,7 @@ $result = mysqli_query($db, $query);
             Rp <?= number_format($row['harga_produk'], 0, ',', '.'); ?>,00
         </div>
 
-    </div>
+</a>
 
 <?php endwhile; ?>
 
