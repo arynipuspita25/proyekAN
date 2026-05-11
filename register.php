@@ -32,44 +32,7 @@
     }
 ?>
 
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=, initial-scale=1.0">
-    <title>Document</title>
-    <link rel="stylesheet" href="style.css"> 
-</head>
-<body>
-     
-    <div class="register-container"> 
-
-    <div class="register-card">
-
-        <div class="register-header">
-            <h3>SIGN UP</h3> 
-        </div>
-
-        <div class="register-form">
-
-            <i><?= $register_message ?></i>
-
-            <form action="register.php" method="POST">
-                <input type="text" placeholder="Username" name="username"/>
-                <input type="password" placeholder="Password" name="password"/>
-                <button type="submit" name="register">Create Account</button>
-                <p class="back-login">
-                 Already have an account? <a href="index.php">Login</a>
-                </p>
-            </form>
-
-        </div>
-
-    </div>
-
-</div>
-   
-</body>
+ 
 
 <style>
 * {
